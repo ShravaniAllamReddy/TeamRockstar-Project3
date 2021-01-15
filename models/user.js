@@ -20,8 +20,8 @@ const userSchema = new Schema(
             trim: true,
             required: 'Enter a password'
         },
-        notes: [
-            { type: Schema.Types.ObjectId, ref: 'Note' }
+        votes: [
+            { type: Schema.Types.ObjectId, ref: 'Vote' }
         ]
     }
 );
