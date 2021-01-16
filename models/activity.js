@@ -11,7 +11,7 @@ const activitySchema = new Schema(
             required: 'Enter activity name'
         },
         description: {
-            type: Text,
+            type: String,
             trim: true,
             allowNull: false,
             required: 'Enter activity description'

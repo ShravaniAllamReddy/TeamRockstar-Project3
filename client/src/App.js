@@ -6,7 +6,7 @@ import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Notes from './pages/Notes';
+import Activities from './pages/Activities';
 
 
 function App() {
@@ -44,8 +44,8 @@ function App() {
                 <Route path='/login'>
                     <Login />
                 </Route>
-                <PrivateRoute exact path='/notes'>
-                    <Notes />
+                <PrivateRoute exact path='/activities'>
+                    <Activities />
                 </PrivateRoute>
             </Switch>
         </Router>
@@ -65,7 +65,7 @@ function PrivateRoute({ children, ...rest }) {
                     (
                         <Redirect
                             to={{
-                                pathname: '/login',
+                                pathname: '/activities',
                                 state: { from: location }
                             }}
                         />
