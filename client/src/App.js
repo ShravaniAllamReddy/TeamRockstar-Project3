@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './pages/Home';
@@ -44,36 +44,36 @@ function App() {
                 <Route path='/login'>
                     <Login />
                 </Route>
-                <PrivateRoute exact path='/activities'>
+                <Route path='/activities'>
                     <Activities />
-                </PrivateRoute>
+                </Route>
             </Switch>
         </Router>
     );
 }
 
-// Yanked straight from the react-router docs for redirects
-function PrivateRoute({ children, ...rest }) {
-    const { isLoggedIn } = useAuth();
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                isLoggedIn() ? (
-                    children
-                ) :
-                    (
-                        <Redirect
-                            to={{
-                                pathname: '/activities',
-                                state: { from: location }
-                            }}
-                        />
-                    )
-            }
-        />
-    );
-}
+//Yanked straight from the react-router docs for redirects
+// function PrivateRoute({ children, ...rest }) {
+//     const { isLoggedIn } = useAuth();
+//     return (
+//         <Route
+//             {...rest}
+//             render={({ location }) =>
+//                 isLoggedIn() ? (
+//                     children
+//                 ) :
+//                     (
+//                         <Redirect
+//                             to={{
+//                                 pathname: '/login',
+//                                 state: { from: location }
+//                             }}
+//                         />
+//                     )
+//             }
+//         />
+//     );
+// }
 
 
 export default App;
