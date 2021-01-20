@@ -1,8 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import API from '../utils/API';
-import ActivityForm from '../components/ActivityForm';
-
+import ActivityDetails from '../components/ActivityDetails';
 
 // hit the API
 // Show the activities list
@@ -37,15 +36,9 @@ class Activity extends Component {
     render() {
         return (
             <>
-                <div className="row">
-                    <div className="col">
-                        <ActivityForm
-                            handleInputChange={this.handleInputChange}
-                            activity={this.state.activitiesList}
-                        />
-                    </div>
-                </div>
-
+                <ActivityDetails
+                    activitiesList={this.state.activitiesList}
+                />
             </>
         );
     }
