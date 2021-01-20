@@ -10,7 +10,7 @@ const restaurantRoutes = require('./restaurantController');
 router.use('/api/activities', activityRoutes);
 router.use('/api/users', userRoutes);
 router.use('/api/auth', authRoutes);
-router.use('/api/restaurants/:lat/:lon', restaurantRoutes);
+router.use('/api/restaurants', restaurantRoutes);
 
 // Export the router
 module.exports = router;
