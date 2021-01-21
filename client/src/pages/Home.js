@@ -1,14 +1,12 @@
+import About from '../components/Home/About';
+
+
 function Home() {
 
     return (
-        <div>
-            <h2>
-                Home Page
-            </h2>
-            <p>
-                Welcome Home
-            </p>
-        </div>
+        
+        <About />
+        
     );
 }
 
