@@ -47,14 +47,6 @@ const activitySchema = new Schema(
         movieOption4: {
             type: String,
             required: 'Enter movie options'
-        },
-        date: {
-            type: Date,
-            default: () => new Date()
-        },
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
         }
     }
 );

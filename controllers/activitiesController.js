@@ -6,10 +6,10 @@ const isAuthenticated = require('../utils/middleware').isAuthenticated;
  */
 router.get('/', isAuthenticated, function(req, res) {
     // we can pass in things in the query of a REST call!
-    db.Activity.find(req.query)
+    // console.log('hello');
+    db.Activity.find()
         .populate('user')
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .then(dbModel => res.json(dbModel));// .catch(err => res.status(422).json(err));
 });
 
 /**

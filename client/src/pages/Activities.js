@@ -1,40 +1,47 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ActivityForm from '../components/ActivityForm';
+import React from 'react';
+import { Component } from 'react';
+import API from '../utils/API';
+import ActivityDetails from '../components/ActivityDetails';
 
-const Activities = function () {
-    const [activities, setActivities] = useState([]);
-    // so we can refresh the Page *after* we get a response back from the server on our new activity!
-    const [refresh, toggleRefresh] = useState(0);
-    const refreshParent = () => {
-        toggleRefresh(refresh + 1);
-    };
-
-    // Notice deps has refresh in there - this way when it increments from someone submitting
-    // it calls fetch activities again.
-    useEffect(() => {
-        fetchActivities();
-    }, [refresh]);
-
-    async function fetchActivities() {
-        const { data } = await axios.get('/api/activities');
-        setActivities(data);
+// hit the API
+// Show the activities list
+class Activity extends Component {
+    state = {
+        activitiesList: []
     }
-    return (
-        <div>
-            <h2>Activities</h2>
-            <ol>
-                {activities.map(activity => {
-                    return (
-                        <li key={activity._id}>
-                            <strong>{activity.name}</strong> {activity.description} <sub>from: {activity.user.email}</sub>
-                        </li>
-                    );
-                })}
-            </ol>
-            <ActivityForm didSubmit={refreshParent} />
-        </div>
-    );
-};
 
-export default Activities;
+    //default method when page loads
+    componentDidMount() {
+        this.fetchActivityDetails();
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value
+        });
+        console.log(value);
+
+    }
+
+    // fetches activity details
+    fetchActivityDetails() {
+        API.getActivities().then(res => {
+
+            this.setState({ activitiesList: res.data });
+        });
+    }
+
+    render() {
+        return (
+            <>
+                <ActivityDetails
+                    activitiesList={this.state.activitiesList}
+                />
+            </>
+        );
+    }
+}
+
+export default Activity;

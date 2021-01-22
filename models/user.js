@@ -5,10 +5,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
-        createdAt: {
-            type: Date,
-            default: () => new Date()
-        },
         email: {
             type: String,
             trim: true,
@@ -22,6 +18,9 @@ const userSchema = new Schema(
         },
         votes: [
             { type: Schema.Types.ObjectId, ref: 'Vote' }
+        ],
+        activities: [
+            { type: Schema.Types.ObjectId, ref: 'Activity' }
         ]
     }
 );
