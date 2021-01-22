@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Activities from './pages/Activities';
-
+import Restaurants from './pages/Restaurants';
 
 function App() {
     // Pull auth token from storage, in case you refresh the page
@@ -15,37 +15,43 @@ function App() {
     axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
     // A nice trick that if we EVER get back a 401, will pop the token off
-    axios.interceptors.response.use(response => {
-        // Any status code that lie within the range of 2xx cause this function to trigger
-        // Do something with response data
-        return response;
-    }, error => {
-        const { message } = error.toJSON();
-        // If we had time, we could write our own custom method to the auth middleware
-        // However, we are just gonna use their message.
-        if(message === 'Request failed with status code 401'){
-            logout();
+    axios.interceptors.response.use(
+        (response) => {
+            // Any status code that lie within the range of 2xx cause this function to trigger
+            // Do something with response data
+            return response;
+        },
+        (error) => {
+            const { message } = error.toJSON();
+            // If we had time, we could write our own custom method to the auth middleware
+            // However, we are just gonna use their message.
+            if (message === 'Request failed with status code 401') {
+                logout();
+            }
+            // Any status codes that falls outside the range of 2xx cause this function to trigger
+            // Do something with response error
+            return Promise.reject(error);
         }
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
-        return Promise.reject(error);
-    });
-    
+    );
+
     return (
         <Router>
             <Navbar />
             <Switch>
-                <Route exact path='/'>
+                <Route exact path="/">
                     <Home />
                 </Route>
-                <Route path='/signup'>
+                <Route path="/signup">
                     <Signup />
                 </Route>
-                <Route path='/login'>
+                <Route path="/login">
                     <Login />
                 </Route>
-                <Route path='/activities'>
+                <Route path="/activities">
                     <Activities />
+                </Route>
+                <Route path="/restaurants">
+                    <Restaurants />
                 </Route>
             </Switch>
         </Router>
@@ -74,6 +80,5 @@ function App() {
 //         />
 //     );
 // }
-
 
 export default App;

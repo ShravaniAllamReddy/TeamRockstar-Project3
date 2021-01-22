@@ -15,4 +15,4 @@ function RestaurantDetails(props) {
     //         )
     );}
 
-export default ActivitRestaurant;
+export default RestaurantDetails;

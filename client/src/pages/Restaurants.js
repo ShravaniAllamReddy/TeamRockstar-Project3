@@ -1,48 +1,48 @@
 import React from 'react';
 import { Component } from 'react';
 import API from '../utils/API';
-import ActivityDetails from '../components/ActivityDetails';
+import RestaurantDetails from '../components/RestaurantDetails';
 
 
 // hit the API
-// Show the activities list
-class Activity extends Component {
+// Show the restaurants list
+class Restaurants extends Component {
     state = {
-        activitiesList: []
+        restaurantList: []
     }
 
     //default method when page loads
     componentDidMount() {
-        this.fetchActivityDetails();
+        this.fetchRestaurantDetails();
     }
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
+    // handleInputChange = event => {
+    //     const { name, value } = event.target;
 
-        this.setState({
-            [name]: value
-        });
-        console.log(value);
+    //     this.setState({
+    //         [name]: value
+    //     });
+    //     console.log(value);
 
-    }
+    // }
 
-    // fetches activity details
-    fetchActivityDetails() {
-        API.getActivities().then(res => {
+    // fetches zomato current location restaurant details
+    fetchRestaurantDetails() {
+        API.getRestaurantDetails().then(res => {
 
-            this.setState({ activitiesList: res.data });
+            this.setState({ restaurantList: res.data });
         });
     }
 
     render() {
         return (
             <>
-                <ActivityDetails
-                    activitiesList={this.state.activitiesList}
+                <RestaurantDetails
+                    restaurantList={this.state.restaurantList}
                 />
             </>
         );
     }
 }
 
-export default Activity;
+export default Restaurants;

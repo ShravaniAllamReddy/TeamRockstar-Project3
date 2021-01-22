@@ -30,6 +30,7 @@ export default function SimpleMenu() {
             >
                 <MenuItem onClick={handleClose}><Link to="/">Home</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to="/activities">Activities</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/restaurants">Restaurants</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to="/signup">Sign up</Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to="/login">login</Link></MenuItem>
             </Menu>
