@@ -4,7 +4,7 @@ function About() {
     return (
         <Container>
             <div>
-                <h1>App Name</h1>
+                <h1>Event Planner</h1>
                 <p>About the app</p>
             </div>
         </Container>
