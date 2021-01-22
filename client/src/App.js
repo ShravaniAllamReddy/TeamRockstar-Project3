@@ -5,7 +5,7 @@ import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Login from './pages/loginNew';
 import Activities from './pages/Activities';
 
 
