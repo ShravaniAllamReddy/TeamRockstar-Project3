@@ -9,20 +9,30 @@ const columns = [
 
 const rows = [
     { id: 1, movieOptions: 'Shrek1' },
-    { id: 2, movieOptions: 'SHrek2' },
+    { id: 2, movieOptions: 'Shrek2' },
     { id: 3, movieOptions: 'Avengers' },
     { id: 4, movieOptions: 'The Croods' },
-    { id: 5, movieOptions: '' },
-    { id: 6, movieOptions: '' },
-    { id: 7, movieOptions: '' },
-    { id: 8, movieOptions: '' },
-    { id: 9, movieOptions: '' },
+    { id: 5, movieOptions: 'Little prince' },
+    { id: 6, movieOptions: 'Joker' },
+    { id: 7, movieOptions: 'Dark Knight' },
+    { id: 8, movieOptions: 'Moana' },
+    { id: 9, movieOptions: 'Frozen' },
 ];
 
-export default function MovieDataTable() {
+export default function MovieDataTable(props) {
     return (
         <div style={{ height: 400, width: 400 }}>
-            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection
+                onRowSelected={select => {
+                    console.log(select);
+                    if (select.isSelected) {
+                        props.setMovies(select.data.movieOptions);
+                    }
+                    else {
+                        props.removeMovies(select.data.movieOptions);
+                    }
+                }}
+            />
         </div>
     );
 }
