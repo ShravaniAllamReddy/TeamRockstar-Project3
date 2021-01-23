@@ -6,6 +6,9 @@ const API = {
     },
     getActivities: function () {
         return axios.get('/api/activities/');
+    },
+    getMovies: function () {
+        return axios.get('/api/movies');
     }  
 };
 
