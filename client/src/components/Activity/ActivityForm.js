@@ -14,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useState } from 'react';
 import axios from 'axios';
-import DataTable from './DataTable';
+import FoodDataTable from './FoodDataTable';
+import MovieDataTable from './MovieDataTable';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,8 +66,8 @@ const ActivityForm = (props) => {
     };
 
     return (
-        <Container component="main" >
-            <CssBaseline />
+        <Container component="main">
+            <CssBaseline/>
             <div className={classes.paper}>
                 {/* <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
@@ -154,7 +155,8 @@ const ActivityForm = (props) => {
                         value={movieOption2}
                         onChange={event => setMovieOption2(event.target.value)}
                     /> */}
-                    < DataTable />
+                    < FoodDataTable />
+                    < MovieDataTable />
                     <Button
                         type="submit"
                         fullWidth
