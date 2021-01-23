@@ -1,48 +1,32 @@
-import React from 'react';
-import { Component } from 'react';
-import API from '../utils/API';
-import ActivityForm from '../components/ActivityForm';
+import { React, useEffect, useState } from 'react';
+import axios from 'axios';
+import ActivityForm from '../components/Activity/ActivityForm';
 
 
-// hit the API
-// Show the activities list
-class Activity extends Component {
-    state = {
-        activitiesList: []
+const Activities = function () {
+    // const [activities, setActivities] = useState([]);
+    // so we can refresh the Page *after* we get a response back from the server on our new note!
+    const [refresh, toggleRefresh] = useState(0);
+    const refreshParent = () => {
+        toggleRefresh(refresh + 1);
+    };
+
+    // Notice deps has refresh in there - this way when it increments from someone submitting
+    // it calls fetch activities again.
+    useEffect(() => {
+        fetchActivities();
+    }, [refresh]);
+
+    async function fetchActivities() {
+        await axios.get('/api/activities');
     }
+    return (
+        <div>
+            <ActivityForm
+                didSubmit={refreshParent}
+            />
+        </div>
+    );
+};
 
-    //default method when page loads
-    componentDidMount() {
-        this.fetchActivityDetails();
-    }
-
-    // handleInputChange = event => {
-    //     const { name, value } = event.target;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    //     console.log(value);
-
-    // }
-
-    // fetches activity details
-    fetchActivityDetails() {
-        API.getActivities().then(res => {
-
-            this.setState({ activitiesList: res.data });
-        });
-    }
-
-    render() {
-        return (
-            <>
-                <ActivityForm
-                    activitiesList={this.state.activitiesList}
-                />       
-            </>
-        );
-    }
-}
-
-export default Activity;
+export default Activities;

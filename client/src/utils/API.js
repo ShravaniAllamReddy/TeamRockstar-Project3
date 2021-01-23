@@ -6,6 +6,9 @@ const API = {
     },
     getActivities: function () {
         return axios.get('/api/activities/');
+    },
+    saveActivity: function (activityData) {
+        return axios.post('/api/activities/', activityData);
     }  
 };
 

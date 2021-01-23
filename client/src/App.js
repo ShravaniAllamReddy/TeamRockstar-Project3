@@ -7,7 +7,8 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Activities from './pages/Activities';
-import Restaurants from './pages/Restaurants';
+import SavedActivities from './pages/SavedActivities';
+// import Restaurants from './pages/Restaurants';
 
 function App() {
     // Pull auth token from storage, in case you refresh the page
@@ -50,8 +51,8 @@ function App() {
                 <Route path="/activities">
                     <Activities />
                 </Route>
-                <Route path="/restaurants">
-                    <Restaurants />
+                <Route path="/savedactivities">
+                    <SavedActivities />
                 </Route>
             </Switch>
         </Router>
