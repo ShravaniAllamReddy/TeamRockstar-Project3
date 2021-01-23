@@ -24,14 +24,14 @@ const activitySchema = new Schema(
             type: String,
             required: 'Enter Food options'
         },
-        foodOption3: {
-            type: String,
-            required: 'Enter Food options'
-        },
-        foodOption4: {
-            type: String,
-            required: 'Enter Food options'
-        },
+        // foodOption3: {
+        //     type: String,
+        //     required: 'Enter Food options'
+        // },
+        // foodOption4: {
+        //     type: String,
+        //     required: 'Enter Food options'
+        // },
         movieOption1: {
             type: String,
             required: 'Enter movie options'
@@ -40,14 +40,14 @@ const activitySchema = new Schema(
             type: String,
             required: 'Enter movie options'
         },
-        movieOption3: {
-            type: String,
-            required: 'Enter movie options'
-        },
-        movieOption4: {
-            type: String,
-            required: 'Enter movie options'
-        }
+        // movieOption3: {
+        //     type: String,
+        //     required: 'Enter movie options'
+        // },
+        // movieOption4: {
+        //     type: String,
+        //     required: 'Enter movie options'
+        // }
     }
 );
 
