@@ -44,25 +44,68 @@ const ActivityForm = (props) => {
     const { didSubmit } = props;
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [foodOption1, setFoodOption1] = useState('');
-    const [foodOption2, setFoodOption2] = useState('');
-    const [movieOption1, setMovieOption1] = useState('');
-    const [movieOption2, setMovieOption2] = useState('');
+    const [foodOption, setFoodOption] = useState([]);
+    const [movieOption, setMovieOption] = useState([]);
 
     const handleSubmit = event => {
         event.preventDefault();
         submitActivity();
     };
+
+
     const submitActivity = async () => {
+
+        let foodOption1 = '',
+            foodOption2 = '',
+            foodOption3 = '',
+            foodOption4 = '';
+        let movieOption1 = '',
+            movieOption2 = '',
+            movieOption3 = '',
+            movieOption4 = '';
+
+        if(foodOption.length <= 4){
+
+            foodOption1 = foodOption[0];
+            foodOption2 = foodOption[1];
+            foodOption3 = foodOption[2];
+            foodOption4 = foodOption[3];
+        }
+
+        if(movieOption.length <= 4){
+
+            movieOption1 = movieOption[0];
+            movieOption2 = movieOption[1];
+            movieOption3 = movieOption[2];
+            movieOption4 = movieOption[3];
+        }
+
         await axios.post('/api/activities',
-            { name: name, description: description, foodOption1: foodOption1, foodOption2: foodOption2, movieOption1: movieOption1, movieOption2: movieOption2 });
+
+            { name: name, description: description , foodOption1 : foodOption1 , foodOption2: foodOption2, foodOption3: foodOption3 , foodOption4: foodOption4,
+                movieOption1: movieOption1, movieOption2: movieOption2 , movieOption3: movieOption3 , movieOption4: movieOption4});
         setName('');
         setDescription('');
-        setFoodOption1('');
-        setFoodOption2('');
-        setMovieOption1('');
-        setMovieOption2('');
         didSubmit();
+    };
+
+    const setFoods = (food) =>{
+        setFoodOption([...foodOption, food]);
+    };
+
+    const setMovies = (movie) =>{
+        setMovieOption([...movieOption, movie]);
+    };
+
+    const removeFoods =(food) => {   
+        const filteredFoods = foodOption.filter(item => item !== food);
+        setFoodOption( filteredFoods); 
+    };
+
+    const removeMovies =(movie) => {   
+        const filteredMovies = movieOption.filter(item => item !== movie);
+        setMovieOption( filteredMovies);
+    
     };
 
     return (
@@ -155,8 +198,14 @@ const ActivityForm = (props) => {
                         value={movieOption2}
                         onChange={event => setMovieOption2(event.target.value)}
                     /> */}
-                    < FoodDataTable />
-                    < MovieDataTable />
+                    < FoodDataTable
+                        setFoods = {setFoods}
+                        removeFoods = {removeFoods}
+                    />
+                    < MovieDataTable 
+                        setMovies = {setMovies}
+                        removeMovies ={removeMovies}
+                    />
                     <Button
                         type="submit"
                         fullWidth

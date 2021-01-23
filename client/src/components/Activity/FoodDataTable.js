@@ -19,10 +19,20 @@ const rows = [
     { id: 9, foodOptions: 'Beef Burger' },
 ];
 
-export default function FoodDataTable() {
+export default function FoodDataTable(props) {
     return (
         <div style={{ height: 400, width: 400 }}>
-            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection 
+                onRowSelected= { select => {
+                    console.log(select);
+                    if(select.isSelected){
+                        props.setFoods(select.data.foodOptions);
+                    }
+                    else{
+                        props.removeFoods(select.data.foodOptions);
+                    }
+                }}
+            />
         </div>
     );
 }
