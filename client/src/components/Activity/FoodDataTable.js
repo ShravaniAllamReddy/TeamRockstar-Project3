@@ -19,9 +19,9 @@ const rows = [
     { id: 9, foodOptions: 'Beef Burger' },
 ];
 
-export default function DataTable() {
+export default function FoodDataTable() {
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div style={{ height: 400, width: 400 }}>
             <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
         </div>
     );
