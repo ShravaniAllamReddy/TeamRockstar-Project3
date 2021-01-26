@@ -14,7 +14,7 @@ const activitySeed = [
         foodOption1: 'Chilis',
         foodOption2: 'Chick-fil-A',
         foodOption3: 'In and Out Burger',
-        foodOption3: 'Chipotle',
+        foodOption4: 'Chipotle',
         movieOption1: 'Avengers',
         movieOption2: 'Rise of the Guardians',
         movieOption3: 'Dark Knight',

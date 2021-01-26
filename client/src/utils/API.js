@@ -7,8 +7,8 @@ const API = {
     getActivities: function () {
         return axios.get('/api/activities/');
     },
-    getMovies: function () {
-        return axios.get('/api/movies');
+    saveActivity: function (activityData) {
+        return axios.post('/api/activities/', activityData);
     }  
 };
 

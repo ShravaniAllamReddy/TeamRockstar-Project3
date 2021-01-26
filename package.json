@@ -4,9 +4,8 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-        "start:prod": "node server.js",
-        "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+        "start": "node server.js",
+        "dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
         "lint": "eslint --quiet . && cd client && npm run lint",
         "fix": "eslint --fix . && cd client && npm run fix",
         "client": "cd client && npm run start",
@@ -20,6 +19,7 @@
     "license": "ISC",
     "dependencies": {
         "@material-ui/core": "^4.11.2",
+        "@material-ui/data-grid": "^4.0.0-alpha.17",
         "@material-ui/icons": "^4.11.2",
         "axios": "^0.21.1",
         "bcryptjs": "2.4.3",
