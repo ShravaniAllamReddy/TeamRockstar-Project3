@@ -17,7 +17,6 @@ import axios from 'axios';
 import FoodDataTable from './FoodDataTable';
 import MovieDataTable from './MovieDataTable';
 
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -41,20 +39,20 @@ const useStyles = makeStyles((theme) => ({
 // display food and movie options in table format from zomato API and movie API with an option to check from those options (host)
 const ActivityForm = (props) => {
     const classes = useStyles();
-    const { didSubmit } = props;
+    const { restaurantList, movieList } = props;
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [foodOption, setFoodOption] = useState([]);
     const [movieOption, setMovieOption] = useState([]);
 
-    const handleSubmit = event => {
+    console.log(restaurantList);
+    console.log(movieList);
+    const handleSubmit = (event) => {
         event.preventDefault();
         submitActivity();
     };
 
-
     const submitActivity = async () => {
-
         let foodOption1 = '',
             foodOption2 = '',
             foodOption3 = '',
@@ -64,53 +62,62 @@ const ActivityForm = (props) => {
             movieOption3 = '',
             movieOption4 = '';
 
-        if(foodOption.length <= 4){
-
+        if (foodOption.length <= 4) {
             foodOption1 = foodOption[0];
             foodOption2 = foodOption[1];
             foodOption3 = foodOption[2];
             foodOption4 = foodOption[3];
         }
 
-        if(movieOption.length <= 4){
-
+        if (movieOption.length <= 4) {
             movieOption1 = movieOption[0];
             movieOption2 = movieOption[1];
             movieOption3 = movieOption[2];
             movieOption4 = movieOption[3];
         }
 
-        await axios.post('/api/activities',
+        await axios.post(
+            '/api/activities',
 
-            { name: name, description: description , foodOption1 : foodOption1 , foodOption2: foodOption2, foodOption3: foodOption3 , foodOption4: foodOption4,
-                movieOption1: movieOption1, movieOption2: movieOption2 , movieOption3: movieOption3 , movieOption4: movieOption4});
+            {
+                name: name,
+                description: description,
+                foodOption1: foodOption1,
+                foodOption2: foodOption2,
+                foodOption3: foodOption3,
+                foodOption4: foodOption4,
+                movieOption1: movieOption1,
+                movieOption2: movieOption2,
+                movieOption3: movieOption3,
+                movieOption4: movieOption4,
+            }
+        );
         setName('');
         setDescription('');
-        didSubmit();
     };
 
-    const setFoods = (food) =>{
+    const setFoods = (food) => {
         setFoodOption([...foodOption, food]);
     };
 
-    const setMovies = (movie) =>{
+    const setMovies = (movie) => {
         setMovieOption([...movieOption, movie]);
     };
 
-    const removeFoods =(food) => {   
-        const filteredFoods = foodOption.filter(item => item !== food);
-        setFoodOption( filteredFoods); 
+    const removeFoods = (food) => {
+        const filteredFoods = foodOption.filter((item) => item !== food);
+        setFoodOption(filteredFoods);
     };
 
-    const removeMovies =(movie) => {   
-        const filteredMovies = movieOption.filter(item => item !== movie);
-        setMovieOption( filteredMovies);
-    
+    const removeMovies = (movie) => {
+        const filteredMovies = movieOption.filter((item) => item !== movie);
+        setMovieOption(filteredMovies);
     };
+
 
     return (
         <Container component="main">
-            <CssBaseline/>
+            <CssBaseline />
             <div className={classes.paper}>
                 {/* <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
@@ -130,7 +137,7 @@ const ActivityForm = (props) => {
                         autoComplete="name"
                         autoFocus
                         value={name}
-                        onChange={event => setName(event.target.value)}
+                        onChange={(event) => setName(event.target.value)}
                     />
                     <br />
                     <TextField
@@ -144,67 +151,17 @@ const ActivityForm = (props) => {
                         id="description"
                         autoComplete="description"
                         value={description}
-                        onChange={event => setDescription(event.target.value)}
+                        onChange={(event) => setDescription(event.target.value)}
                     />
-                    {/* <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="foodOption1"
-                        label="foodOption1"
-                        name="foodOption1"
-                        autoComplete="foodOption1"
-                        autoFocus
-                        value={foodOption1}
-                        onChange={event => setFoodOption1(event.target.value)}
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="foodOption2"
-                        label="foodOption2"
-                        name="foodOption2"
-                        autoComplete="foodOption2"
-                        autoFocus
-                        value={foodOption2}
-                        onChange={event => setFoodOption2(event.target.value)}
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="movieOption1"
-                        label="movieOption1"
-                        name="movieOption1"
-                        autoComplete="movieOption1"
-                        autoFocus
-                        value={movieOption1}
-                        onChange={event => setMovieOption1(event.target.value)}
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="movieOption2"
-                        label="movieOption2"
-                        name="movieOption2"
-                        autoComplete="movieOption2"
-                        autoFocus
-                        value={movieOption2}
-                        onChange={event => setMovieOption2(event.target.value)}
-                    /> */}
+
                     < FoodDataTable
-                        setFoods = {setFoods}
-                        removeFoods = {removeFoods}
+                        restaurantList={restaurantList}
+                        setFoods={setFoods}
+                        removeFoods={removeFoods}
                     />
-                    < MovieDataTable 
-                        setMovies = {setMovies}
-                        removeMovies ={removeMovies}
+                    <MovieDataTable
+                        setMovies={setMovies}
+                        removeMovies={removeMovies}
                     />
                     <Button
                         type="submit"
@@ -215,20 +172,11 @@ const ActivityForm = (props) => {
                     >
                         Submit
                     </Button>
-
-                    {/* <Grid container>
-                        <Grid item xs>
-                        </Grid>
-                    </Grid> */}
                 </form>
-
-
             </div>
-            <Box mt={8}>
-            </Box>
+            <Box mt={8}></Box>
         </Container>
     );
 };
-
 
 export default ActivityForm;
