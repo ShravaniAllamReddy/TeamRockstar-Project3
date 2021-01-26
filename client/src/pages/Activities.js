@@ -1,32 +1,59 @@
-import { React, useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Component } from 'react';
+import API from '../utils/API';
 import ActivityForm from '../components/Activity/ActivityForm';
 
 
-const Activities = function () {
-    // const [activities, setActivities] = useState([]);
-    // so we can refresh the Page *after* we get a response back from the server on our new note!
-    const [refresh, toggleRefresh] = useState(0);
-    const refreshParent = () => {
-        toggleRefresh(refresh + 1);
+// hit the API
+// Show the activities list
+class Activity extends Component {
+    state = {
+        restaurantList: [],
+        movieList: []
     };
 
-    // Notice deps has refresh in there - this way when it increments from someone submitting
-    // it calls fetch activities again.
-    useEffect(() => {
-        fetchActivities();
-    }, [refresh]);
+    //default method when page loads
+    componentDidMount() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition((position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                API.getRestaurantDetails(lat,lon).then(res => {
+                    const result = res.data.nearby_restaurants.map((result) => {
+                        result = {
+                            id: result.restaurant.id,
+                            name: result.restaurant.name,
+                            link: result.restaurant.url,
+                            image: result.restaurant.thumb,
+                            menu: result.restaurant.menu_url
+                        };
+                        return result;
+                    });
+                    this.setState({ restaurantList: result });
+                });
+            });
+        }
 
-    async function fetchActivities() {
-        await axios.get('/api/activities');
     }
-    return (
-        <div>
-            <ActivityForm
-                didSubmit={refreshParent}
-            />
-        </div>
-    );
-};
 
-export default Activities;
+
+    fetchMovieDetails() {
+        API.getMovieDetails().then(res => {
+
+            this.setState({ movieList: res.data });
+        });
+    }
+
+    render() {
+        return (
+            <>
+                <ActivityForm
+                    restaurantList={this.state.restaurantList}
+                    movieList={this.state.movieList}
+                />
+            </>
+        );
+    }
+}
+
+export default Activity;
