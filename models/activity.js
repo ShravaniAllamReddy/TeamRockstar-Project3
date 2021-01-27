@@ -47,6 +47,10 @@ const activitySchema = new Schema(
         movieOption4: {
             type: String,
             required: 'Enter movie options'
+        },
+        voteId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Vote'
         }
     }
 );

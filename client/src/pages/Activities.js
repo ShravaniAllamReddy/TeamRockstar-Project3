@@ -3,7 +3,6 @@ import { Component } from 'react';
 import API from '../utils/API';
 import ActivityForm from '../components/Activity/ActivityForm';
 
-
 // hit the API
 // Show the activities list
 class Activity extends Component {
@@ -18,7 +17,7 @@ class Activity extends Component {
             navigator.geolocation.watchPosition((position) => {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
-                API.getRestaurantDetails(lat,lon).then(res => {
+                API.getRestaurantDetails(lat, lon).then(res => {
                     const result = res.data.nearby_restaurants.map((result) => {
                         result = {
                             id: result.restaurant.id,
@@ -31,16 +30,26 @@ class Activity extends Component {
                     });
                     this.setState({ restaurantList: result });
                 });
+                this.fetchMovieDetails();
             });
         }
 
     }
 
-
     fetchMovieDetails() {
         API.getMovieDetails().then(res => {
+            const result = res.data.results.map((result) => {
+                result = {
 
-            this.setState({ movieList: res.data });
+                    id: result.tmdbID,
+                    title: result.title,
+                    image: result.posterURLs[185],
+                    link: result.streamingInfo.netflix.us.link
+
+                };
+                return result;
+            });
+            this.setState({ movieList: result });
         });
     }
 
