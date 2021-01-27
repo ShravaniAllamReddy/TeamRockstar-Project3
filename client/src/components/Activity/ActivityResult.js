@@ -68,4 +68,13 @@ function ActivityResult(props) {
 
 }
 
+// function refresh() {
+//     // make Ajax call here, inside the callback call:
+//     setTimeout(refresh, 5000);
+//     ActivityResult();
+// }
+
+// // initial call, or just call refresh directly
+// setTimeout(refresh, 5000);
+
 export default ActivityResult;

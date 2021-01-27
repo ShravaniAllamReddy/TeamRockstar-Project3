@@ -29,7 +29,7 @@ export default function MovieCard(props) {
                 <CardMedia
                     className={classes.media}
                     image=""
-                    title="Paella dish"
+                    title=""
                 />
                 <ListItemText
                     primary={props.title}
