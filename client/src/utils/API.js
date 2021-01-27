@@ -12,7 +12,7 @@ const API = {
     },
     getMovieDetails: function(){
         return axios.get('/api/movies');
-    }
+    },
   
 };
 

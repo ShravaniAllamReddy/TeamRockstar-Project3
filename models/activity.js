@@ -48,10 +48,11 @@ const activitySchema = new Schema(
             type: String,
             required: 'Enter movie options'
         },
-        voteId: {
+        //one to many relationship
+        voteId: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Vote'
-        }
+        }]
     }
 );
 
