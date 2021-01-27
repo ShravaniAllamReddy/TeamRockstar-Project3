@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
 function ActivityDetails(props) {
     console.log(props.activitiesList);
     const classes = useStyles();
-    return(
-        props.activitiesList.map( activity => {
+    return (
+        props.activitiesList.map(activity => {
             return (
                 <Container>
                     <div className={classes.root}>
@@ -72,14 +72,14 @@ function ActivityDetails(props) {
                             <AccordionDetails className={classes.details}>
                                 <div className={classes.column} />
                                 <div className={classes.column}>
-                                    <Chip label="Barbados" onDelete={() => {console.log('delete');}} />
+                                    <Chip label="Barbados" onDelete={() => { console.log('delete'); }} />
                                 </div>
                                 <div className={clsx(classes.column, classes.helper)}>
                                     <Typography variant="caption">
-              Select your destination of choice
+                                        Select your destination of choice
                                         <br />
                                         <a href="#secondary-heading-and-columns" className={classes.link}>
-                Learn more
+                                            Learn more
                                         </a>
                                     </Typography>
                                 </div>
@@ -88,7 +88,7 @@ function ActivityDetails(props) {
                             <AccordionActions>
                                 <Button size="small">Cancel</Button>
                                 <Button size="small" color="primary">
-            Save
+                                    Save
                                 </Button>
                             </AccordionActions>
                         </Accordion>

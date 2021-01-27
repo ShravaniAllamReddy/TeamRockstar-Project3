@@ -15,10 +15,10 @@ export default function FoodDataTable(props) {
                 onRowSelected= { select => {
                     console.log(select);
                     if(select.isSelected){
-                        props.setFoods(select.data.foodOptions);
+                        props.setFoods(select.data.name);
                     }
                     else{
-                        props.removeFoods(select.data.foodOptions);
+                        props.removeFoods(select.data.name);
                     }
                 }}
             />

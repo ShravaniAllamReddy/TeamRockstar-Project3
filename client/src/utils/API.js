@@ -9,7 +9,10 @@ const API = {
     },
     saveActivity: function (activityData) {
         return axios.post('/api/activities/', activityData);
-    } 
+    },
+    getMovieDetails: function(){
+        return axios.get('/api/movies');
+    }
   
 };
 
