@@ -27,8 +27,8 @@ router.get('/:lat/:lon', function (req, res) {
 //                 },
 //             }
 //         )
-//         .then(function (response) {
-//             const foodOptions = db.FoodOptions.insertMany();
+//         .then(function (data) {
+//             const foodOptions = db.FoodOptions.insertMany(data);
 //             res.json(foodOptions);
 //         });
 // });

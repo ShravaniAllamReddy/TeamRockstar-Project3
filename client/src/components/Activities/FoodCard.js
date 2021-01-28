@@ -1,52 +1,53 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
 // import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 // import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+// import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActions from "@material-ui/core/CardActions";
+import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
-        maxWidth: '36ch',
-        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        width: 300,
+    },
+    content: {
+        flex: '1 0 auto',
     },
     inline: {
         display: 'inline',
     },
+    cover: {
+        width: 100,
+    }
 }));
 
 export default function FoodCard(props) {
     const classes = useStyles();
-    
+
 
     return (
-        <List className={classes.root}>
-            <ListItem alignItems="flex-start">
-                <CardMedia
-                    className={classes.media}
-                    image=""
-                    title=""
-                />
-                <ListItemText
-                    primary={props.title}
-                    secondary={
-                        <React.Fragment>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                className={classes.inline}
-                                color="textPrimary"
-                            >
-                            </Typography>
-                            {'Restaurant details'}
-                        </React.Fragment>
-                    }
-                />
-            </ListItem>
-        </List>
+        <Card className={classes.root}>
+
+            <CardMedia
+                className={classes.cover}
+                image="https://images.pexels.com/photos/331107/pexels-photo-331107.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                title=""
+            />
+
+            <CardContent className={classes.content}>
+                <Typography component="h5" variant="h5">
+                    {props.title}
+                </Typography>
+
+            </CardContent>
+
+        </Card>
     );
 }

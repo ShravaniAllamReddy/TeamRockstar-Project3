@@ -18,35 +18,27 @@ const activitySchema = new Schema(
         },
         foodOption1: {
             type: String,
-            required: 'Enter Food options'
         },
         foodOption2: {
             type: String,
-            required: 'Enter Food options'
         },
         foodOption3: {
             type: String,
-            required: 'Enter Food options'
         },
         foodOption4: {
             type: String,
-            required: 'Enter Food options'
         },
         movieOption1: {
             type: String,
-            required: 'Enter movie options'
         },
         movieOption2: {
             type: String,
-            required: 'Enter movie options'
         },
         movieOption3: {
             type: String,
-            required: 'Enter movie options'
         },
         movieOption4: {
             type: String,
-            required: 'Enter movie options'
         },
         //one to many relationship
         voteId: [{
@@ -57,5 +49,4 @@ const activitySchema = new Schema(
 );
 
 const Activity = mongoose.model('Activity', activitySchema);
-
 module.exports = Activity;
