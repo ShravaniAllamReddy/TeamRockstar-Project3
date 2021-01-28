@@ -10,9 +10,12 @@ class Activity extends Component {
         restaurantList: [],
         movieList: []
     };
+    // console.log(this.props.match.params.activityid)
 
     //default method when page loads
     componentDidMount() {
+        const params = new URLSearchParams(window.location.search);
+        console.log(params.get('activityid'));
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition((position) => {
                 const lat = position.coords.latitude;
@@ -33,7 +36,6 @@ class Activity extends Component {
                 this.fetchMovieDetails();
             });
         }
-
     }
 
     fetchMovieDetails() {
