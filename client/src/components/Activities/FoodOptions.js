@@ -72,10 +72,10 @@ export default function FoodOptions(props) {
         <Container>
             <FormControl component="fieldset">
                 <RadioGroup aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="option1" control={<StyledRadio />} label={<FoodCard title={foodOption1} />}/>
+                    <FormControlLabel value="option1" control={<StyledRadio />} label={<FoodCard title={foodOption1}/>}/>
                     <Divider/>
                     <FormControlLabel value="option2" control={<StyledRadio />} label={<FoodCard title={foodOption2} />}/>
-                    <Divider/>
+                    <Divider/>  
                     <FormControlLabel value="option3" control={<StyledRadio />} label={<FoodCard title={foodOption3} />}/>
                     <Divider/>
                     <FormControlLabel value="option4" control={<StyledRadio />} label={<FoodCard title={foodOption4} />}/>

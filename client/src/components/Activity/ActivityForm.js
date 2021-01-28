@@ -75,21 +75,9 @@ const ActivityForm = (props) => {
             movieOption3 = movieOption[2];
             movieOption4 = movieOption[3];
         }
-        console.log( {
-            name: name,
-            description: description,
-            foodOption1: foodOption1,
-            foodOption2: foodOption2,
-            foodOption3: foodOption3,
-            foodOption4: foodOption4,
-            movieOption1: movieOption1,
-            movieOption2: movieOption2,
-            movieOption3: movieOption3,
-            movieOption4: movieOption4,
-        });
+     
         await axios.post(
-            '/api/activities',
-         
+            '/api/activities',   
             {
                 name: name,
                 description: description,
