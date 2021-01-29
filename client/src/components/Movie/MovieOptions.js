@@ -5,8 +5,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FoodCard from './FoodCard';
-import Divider from '@material-ui/core/Divider';
+import MovieCard from './MovieCard';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
@@ -66,19 +65,19 @@ function StyledRadio(props) {
     );
 }
 
-export default function FoodOptions(props) {
-    const {foodOption1, foodOption2, foodOption3, foodOption4} = props.activity;
+export default function MovieOptions(props) {
+    const {movieOption1, movieOption2, movieOption3, movieOption4} = props.activity;
     return (
         <Container>
             <FormControl component="fieldset">
                 <RadioGroup aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="option1" control={<StyledRadio />} label={<FoodCard title={foodOption1}/>}/>
-                    <Divider/>
-                    <FormControlLabel value="option2" control={<StyledRadio />} label={<FoodCard title={foodOption2} />}/>
-                    <Divider/>  
-                    <FormControlLabel value="option3" control={<StyledRadio />} label={<FoodCard title={foodOption3} />}/>
-                    <Divider/>
-                    <FormControlLabel value="option4" control={<StyledRadio />} label={<FoodCard title={foodOption4} />}/>
+                    <FormControlLabel value="option1" control={<StyledRadio />} label={<MovieCard title={movieOption1} />}/>
+                   
+                    <FormControlLabel value="option2" control={<StyledRadio />} label={<MovieCard title={movieOption2} />}/>
+                   
+                    <FormControlLabel value="option3" control={<StyledRadio />} label={<MovieCard title={movieOption3} />}/>
+                    
+                    <FormControlLabel value="option4" control={<StyledRadio />} label={<MovieCard title={movieOption4} />}/>
                 </RadioGroup>
             </FormControl>
         </Container>

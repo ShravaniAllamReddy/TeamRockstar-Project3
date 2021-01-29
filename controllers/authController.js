@@ -75,9 +75,21 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-router.get('/userdata', function (req, res) {
-    res.json(req.user);
+router.get('/user_data', function (req, res) {
+    if (!req.user) {
+        res.json({});
+    } else {
+        res.json({
+            email: req.user.email,
+            id: req.user.id,
+        });
+    }
 });
 
+// Route for logging user out
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 module.exports = router;

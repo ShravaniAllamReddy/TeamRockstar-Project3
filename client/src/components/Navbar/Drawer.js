@@ -14,6 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/auth';
 
 const drawerWidth = 240;
 
@@ -75,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+    const { isLoggedIn, logout, getProfile } = useAuth();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -107,7 +109,7 @@ export default function PersistentDrawerLeft() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-            Event Planner
+                        Event Planner
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -138,23 +140,39 @@ export default function PersistentDrawerLeft() {
                     </ListItem>
                 </List>
                 <Divider />
+
                 <List>
                     <ListItem>
                         <Link to="/savedactivities">Activities</Link>
                     </ListItem>
                 </List>
                 <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/signup">Sign up</Link>
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/login">login</Link>
-                    </ListItem>
-                </List>
+                {isLoggedIn() ?
+                    <>
+                        <List>
+                            <ListItem>
+                                Hello, {getProfile().email}
+                                <Link onClick={() => logout()} to="/">logout</Link>
+                            </ListItem>
+                        </List>
+                    </>
+                    :
+                    <>
+                        <List>
+                            <ListItem>
+                                <Link to="/signup">Sign up</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <Link to="/login">login</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                    </>
+
+                }
             </Drawer>
         </div>
     );
