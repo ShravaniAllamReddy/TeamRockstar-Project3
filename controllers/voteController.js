@@ -12,15 +12,5 @@ router.post('/', isAuthenticated, function (req, res) {
         .catch(err => res.status(422).json(err));
 });
 
-//get all votes
-// [{
-//    choice: "burger",
-//    count:4
-
-// },{
-//     choice:"pizaa",
-//     count:2
-// }]
-
 
 module.exports = router;

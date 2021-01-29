@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-// import API from '../../utils/API';
 import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,16 +14,12 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        marginTop: theme.spacing(1),
-    },
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    delete: {
+        margin: theme.spacing(3, 1, 2),
+    }
 }));
 // this is where we display food and movie options in cards so that user can vote from those choices ( invited users) food options from zomato api checkbox
 const ActivityResult = (props) => {
@@ -32,7 +27,7 @@ const ActivityResult = (props) => {
     const [foodVoted, setFoodVoted] = useState('');
     const [movieVoted, setMovieVoted] = useState('');
 
-    // console.log(props.savedActivities);
+    // to post the votes
     const handleSubmit = (event) => {
         event.preventDefault();
         submitVotes();
@@ -81,13 +76,22 @@ const ActivityResult = (props) => {
                     />
                     <Button
                         type="submit"
-                        fullWidth
                         variant="contained"
                         color="primary"
                         className={classes.submit}
                         onClick={handleSubmit}
                     >
                         Submit
+                    </Button>
+
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        className={classes.delete}
+                        onClick={props.handleDelete}
+                    >
+                        Delete
                     </Button>
 
                 </div>
