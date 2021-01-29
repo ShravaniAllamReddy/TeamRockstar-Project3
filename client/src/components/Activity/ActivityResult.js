@@ -40,10 +40,10 @@ const ActivityResult = (props) => {
 
     const submitVotes = async () => {
 
-        console.log('hello'); 
+        console.log('hello');
         await axios.post(
             '/api/votes',
-            {   
+            {
                 activity: props.currentActivity,
                 foodVoted: foodVoted,
                 movieVoted: movieVoted,
@@ -51,55 +51,53 @@ const ActivityResult = (props) => {
         );
     };
 
-    return props.savedActivities.length > 0 ? (
+    const activity = props.savedActivities;
 
-        props.savedActivities.map(activity => {
-            return (
-                <div className="card">
-                    <div className="card-body">
-                        <div className='text-center' key={activity._id}>
-                              
-                            <h3 className="font-weight-bold">{activity.name}</h3>
+    return activity.hasOwnProperty('_id') ? (
 
-                            <p> {activity.description}</p>
-                            <Typography component="h1" variant="h5">
-                                Near By Restaurants
-                            </Typography>
-                            <FoodOptions
-                                activity={activity}
-                                setFoodVoted ={setFoodVoted}
-                                foodVoted ={foodVoted}
-                            />
-                            <hr />
-                            <Typography component="h1" variant="h5">
-                                Popular Movies on 'The Movie DB'
-                            </Typography>
-                            <MovieOptions
-                                activity={activity}
-                                setMovieVoted ={setMovieVoted}
-                                movieVoted ={movieVoted}
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </Button>
+        <div className="card">
+            <div className="card-body">
+                <div className='text-center' key={activity._id}>
 
-                        </div>
-                    </div>
+                    <h3 className="font-weight-bold">{activity.name}</h3>
+
+                    <p> {activity.description}</p>
+                    <Typography component="h1" variant="h5">
+                        Near By Restaurants
+                    </Typography>
+                    <FoodOptions
+                        activity={activity}
+                        setFoodVoted={setFoodVoted}
+                        foodVoted={foodVoted}
+                    />
+                    <hr />
+                    <Typography component="h1" variant="h5">
+                        Popular Movies on 'The Movie DB'
+                    </Typography>
+                    <MovieOptions
+                        activity={activity}
+                        setMovieVoted={setMovieVoted}
+                        movieVoted={movieVoted}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={handleSubmit}
+                    >
+                        Submit
+                    </Button>
+
                 </div>
-            );
-        }
-        )
+            </div>
+        </div>
 
     ) : (
         <h3>No activities to display</h3>
     );
+
 };
 // function refresh() {
 //     // make Ajax call here, inside the callback call:

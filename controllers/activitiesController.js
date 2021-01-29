@@ -16,6 +16,15 @@ router.get('/', isAuthenticated, function(req, res) {
  * Activity - Read One
  */
 router.get('/:id', isAuthenticated, function(req, res) {
+    console.log(req.params.id);
+    db.Activity.findById(req.params.id)
+        .populate('user')
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+});
+
+router.get('/getone/:id', isAuthenticated, function(req, res) {
+    console.log(req.params.id);
     db.Activity.findById(req.params.id)
         .populate('user')
         .then(dbModel => res.json(dbModel))
