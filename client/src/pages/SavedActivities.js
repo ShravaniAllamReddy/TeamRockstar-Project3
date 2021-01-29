@@ -9,18 +9,18 @@ import ActivityResult from '../components/Activity/ActivityResult';
 class SavedActivity extends Component {
     state = {
         savedActivities: [],  
+        currentActivity: ''
     };
 
     //default method when page loads
     componentDidMount() {
-        this.fetchActivityDetails();
-    }
-
-    // fetches activity details
-    fetchActivityDetails() {
-        API.getActivities().then(res => {
-
-            this.setState({ savedActivities: res.data });
+        // const params = new URLSearchParams(this.props.location.search);
+        // console.log(params);
+        console.log(this.props);
+        this.setState({currentActivity: this.props.location.search.substring(1)});
+        const currentActivity = this.state.currentActivity;
+        API.getActivityById(currentActivity).then(res=> {
+            this.setState({savedActivities : res.data});
         });
     }
 
@@ -29,6 +29,7 @@ class SavedActivity extends Component {
             <>
                 <ActivityResult
                     savedActivities={this.state.savedActivities}
+                    currentActivity={this.state.currentActivity}
                 />       
             </>
         );

@@ -1,7 +1,9 @@
 const db = require('../models');
 const router = require('express').Router();
+const isAuthenticated = require('../utils/middleware').isAuthenticated;
 
-router.post('/', function (req, res) {
+
+router.post('/', isAuthenticated, function (req, res) {
     db.Vote.create({
         user: req.user._id,
         ...req.body

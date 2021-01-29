@@ -42,8 +42,9 @@ const ActivityResult = (props) => {
 
         console.log('hello'); 
         await axios.post(
-            '/api/activities',
-            {
+            '/api/votes',
+            {   
+                activity: props.currentActivity,
                 foodVoted: foodVoted,
                 movieVoted: movieVoted,
             }
@@ -67,6 +68,7 @@ const ActivityResult = (props) => {
                             <FoodOptions
                                 activity={activity}
                                 setFoodVoted ={setFoodVoted}
+                                foodVoted ={foodVoted}
                             />
                             <hr />
                             <Typography component="h1" variant="h5">
@@ -74,7 +76,8 @@ const ActivityResult = (props) => {
                             </Typography>
                             <MovieOptions
                                 activity={activity}
-                                setMovieVoted ={ setMovieVoted}
+                                setMovieVoted ={setMovieVoted}
+                                movieVoted ={movieVoted}
                             />
                             <Button
                                 type="submit"
