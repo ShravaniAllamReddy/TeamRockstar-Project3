@@ -5,9 +5,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import MovieCard from './MovieCard';
-import Divider from '@material-ui/core/Divider';
+import FoodCard from './FoodCard';
 import Container from '@material-ui/core/Container';
+
 
 const useStyles = makeStyles({
     root: {
@@ -66,19 +66,28 @@ function StyledRadio(props) {
     );
 }
 
-export default function MovieOptions(props) {
-    const {movieOption1, movieOption2, movieOption3, movieOption4} = props.activity;
+export default function FoodOptions(props) {
+    const { foodOption1, foodOption2, foodOption3, foodOption4 } = props.activity;
+
+
+    const [selected, setSelected] = React.useState({foodOption1});
+
+    const handleChange = (event) => {
+        setSelected(event.target.value);
+    };
     return (
         <Container>
             <FormControl component="fieldset">
-                <RadioGroup aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="option1" control={<StyledRadio />} label={<MovieCard title={movieOption1} />}/>
-                    <Divider/>
-                    <FormControlLabel value="option2" control={<StyledRadio />} label={<MovieCard title={movieOption2} />}/>
-                    <Divider/>
-                    <FormControlLabel value="option3" control={<StyledRadio />} label={<MovieCard title={movieOption3} />}/>
-                    <Divider/>
-                    <FormControlLabel value="option4" control={<StyledRadio />} label={<MovieCard title={movieOption4} />}/>
+                <RadioGroup aria-label="gender" name="customized-radios" value={selected}
+                    onChange={handleChange}>
+
+                    <FormControlLabel value={foodOption1} control={<StyledRadio />} label={<FoodCard title={foodOption1} />} />
+
+                    <FormControlLabel value={foodOption2} control={<StyledRadio />} label={<FoodCard title={foodOption2} />} />
+
+                    <FormControlLabel value={foodOption3} control={<StyledRadio />} label={<FoodCard title={foodOption3} />} />
+
+                    <FormControlLabel value={foodOption4} control={<StyledRadio />} label={<FoodCard title={foodOption4} />} />
                 </RadioGroup>
             </FormControl>
         </Container>

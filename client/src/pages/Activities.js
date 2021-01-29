@@ -43,11 +43,9 @@ class Activity extends Component {
             const result = res.data.results.map((result) => {
                 result = {
 
-                    id: result.tmdbID,
+                    id: result.id,
                     title: result.title,
-                    image: result.posterURLs[185],
-                    link: result.streamingInfo.netflix.us.link
-
+    
                 };
                 return result;
             });

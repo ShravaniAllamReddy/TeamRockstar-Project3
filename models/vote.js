@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 
 const voteSchema = new mongoose.Schema({
-    user: {
+    //votes to foodoptions by different users
+    users: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
     activity:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Activity'
     },
     //list of movies or restaurants
-    foodVoted: Array
+    foodVoted: String
     // ref: 'User'
     ,
-    movieVoted: Array
+    movieVoted: String
     // ref: 'User'
     ,
     eventDate: {

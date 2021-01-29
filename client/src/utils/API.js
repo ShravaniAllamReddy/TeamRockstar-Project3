@@ -5,7 +5,7 @@ const API = {
         return axios.get('/api/restaurants/' + lat + '/' + lon);
     },
     getActivities: function () {
-        return axios.get('/api/activities/');
+        return axios.get('/api/activities');
     },
     saveActivity: function (activityData) {
         return axios.post('/api/activities/', activityData);
@@ -13,6 +13,9 @@ const API = {
     getMovieDetails: function(){
         return axios.get('/api/movies');
     },
+    saveVotes: function(voteData){
+        return axios.post('/api/votes', voteData);
+    }
   
 };
 

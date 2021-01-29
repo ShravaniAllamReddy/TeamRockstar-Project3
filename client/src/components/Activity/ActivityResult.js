@@ -1,8 +1,12 @@
 import React from 'react';
-import FoodOptions from '../Activities/FoodOptions';
-import MovieOptions from '../Activities/MovieOptions';
+import FoodOptions from '../Food/FoodOptions';
+import MovieOptions from '../Movie/MovieOptions';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
+// import API from '../../utils/API';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -23,9 +27,29 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 // this is where we display food and movie options in cards so that user can vote from those choices ( invited users) food options from zomato api checkbox
-function ActivityResult(props) {
+const ActivityResult = (props) => {
     const classes = useStyles();
-    console.log(props.savedActivities);
+    const [foodVoted, setFoodVoted] = useState('');
+    const [movieVoted, setMovieVoted] = useState('');
+
+    // console.log(props.savedActivities);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        submitVotes();
+    };
+
+    const submitVotes = async () => {
+
+        console.log('hello'); 
+        await axios.post(
+            '/api/activities',
+            {
+                foodVoted: foodVoted,
+                movieVoted: movieVoted,
+            }
+        );
+    };
+
     return props.savedActivities.length > 0 ? (
 
         props.savedActivities.map(activity => {
@@ -33,17 +57,24 @@ function ActivityResult(props) {
                 <div className="card">
                     <div className="card-body">
                         <div className='text-center' key={activity._id}>
+                              
                             <h3 className="font-weight-bold">{activity.name}</h3>
 
                             <p> {activity.description}</p>
-                            <h3>Food Choices</h3>
+                            <Typography component="h1" variant="h5">
+                                Near By Restaurants
+                            </Typography>
                             <FoodOptions
                                 activity={activity}
+                                setFoodVoted ={setFoodVoted}
                             />
                             <hr />
-                            <h3> Movie Choices</h3>
+                            <Typography component="h1" variant="h5">
+                                Popular Movies on 'The Movie DB'
+                            </Typography>
                             <MovieOptions
                                 activity={activity}
+                                setMovieVoted ={ setMovieVoted}
                             />
                             <Button
                                 type="submit"
@@ -51,6 +82,7 @@ function ActivityResult(props) {
                                 variant="contained"
                                 color="primary"
                                 className={classes.submit}
+                                onClick={handleSubmit}
                             >
                                 Submit
                             </Button>
@@ -65,9 +97,7 @@ function ActivityResult(props) {
     ) : (
         <h3>No activities to display</h3>
     );
-
-}
-
+};
 // function refresh() {
 //     // make Ajax call here, inside the callback call:
 //     setTimeout(refresh, 5000);
