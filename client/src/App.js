@@ -53,9 +53,8 @@ function App() {
                 <Route path="/activities">
                     <Activities />
                 </Route>
-                <Route path="/savedactivities">
-                    <SavedActivities />
-                </Route>
+                <Route path="/savedactivities" component={SavedActivities}/>
+                    
                 <Route path="/activities/:activityid" component={Activities}>
                 </Route>
             </Switch>

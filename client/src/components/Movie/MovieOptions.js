@@ -67,17 +67,21 @@ function StyledRadio(props) {
 
 export default function MovieOptions(props) {
     const {movieOption1, movieOption2, movieOption3, movieOption4} = props.activity;
+
+    const handleChange = (event) => {
+        props.setMovieVoted(event.target.value);
+    };
     return (
         <Container>
             <FormControl component="fieldset">
-                <RadioGroup aria-label="gender" name="customized-radios">
-                    <FormControlLabel value="option1" control={<StyledRadio />} label={<MovieCard title={movieOption1} />}/>
+                <RadioGroup aria-label="gender" name="customized-radios" value={props.movieVoted} onChange={handleChange}>
+                    <FormControlLabel value={movieOption1} control={<StyledRadio />} label={<MovieCard title={movieOption1} />}/>
                    
-                    <FormControlLabel value="option2" control={<StyledRadio />} label={<MovieCard title={movieOption2} />}/>
+                    <FormControlLabel value={movieOption2} control={<StyledRadio />} label={<MovieCard title={movieOption2} />}/>
                    
-                    <FormControlLabel value="option3" control={<StyledRadio />} label={<MovieCard title={movieOption3} />}/>
+                    <FormControlLabel value={movieOption3} control={<StyledRadio />} label={<MovieCard title={movieOption3} />}/>
                     
-                    <FormControlLabel value="option4" control={<StyledRadio />} label={<MovieCard title={movieOption4} />}/>
+                    <FormControlLabel value={movieOption4} control={<StyledRadio />} label={<MovieCard title={movieOption4} />}/>
                 </RadioGroup>
             </FormControl>
         </Container>

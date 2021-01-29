@@ -70,15 +70,15 @@ export default function FoodOptions(props) {
     const { foodOption1, foodOption2, foodOption3, foodOption4 } = props.activity;
 
 
-    const [selected, setSelected] = React.useState({foodOption1});
+    // const [selected, setSelected] = React.useState({foodOption1});
 
     const handleChange = (event) => {
-        setSelected(event.target.value);
+        props.setFoodVoted(event.target.value);
     };
     return (
         <Container>
             <FormControl component="fieldset">
-                <RadioGroup aria-label="gender" name="customized-radios" value={selected}
+                <RadioGroup aria-label="gender" name="customized-radios" value={props.foodVoted}
                     onChange={handleChange}>
 
                     <FormControlLabel value={foodOption1} control={<StyledRadio />} label={<FoodCard title={foodOption1} />} />

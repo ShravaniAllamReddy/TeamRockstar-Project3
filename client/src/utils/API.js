@@ -7,6 +7,9 @@ const API = {
     getActivities: function () {
         return axios.get('/api/activities');
     },
+    getActivityById: function (id) {
+        return axios.get('/api/activities/'+ id );
+    },
     saveActivity: function (activityData) {
         return axios.post('/api/activities/', activityData);
     },
