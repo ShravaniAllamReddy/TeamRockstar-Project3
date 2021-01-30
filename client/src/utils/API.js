@@ -10,15 +10,13 @@ const API = {
     getActivityById: function (id) {
         return axios.get('/api/activities/getone/'+ id );
     },
-    saveActivity: function (activityData) {
-        return axios.post('/api/activities/', activityData);
+    deleteActivityById: function (id) {
+        return axios.delete('/api/activities/'+ id );
     },
     getMovieDetails: function(){
         return axios.get('/api/movies');
     },
-    saveVotes: function(voteData){
-        return axios.post('/api/votes', voteData);
-    }
+
   
 };
 

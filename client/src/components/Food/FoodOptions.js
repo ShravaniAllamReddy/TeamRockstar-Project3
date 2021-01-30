@@ -69,9 +69,6 @@ function StyledRadio(props) {
 export default function FoodOptions(props) {
     const { foodOption1, foodOption2, foodOption3, foodOption4 } = props.activity;
 
-
-    // const [selected, setSelected] = React.useState({foodOption1});
-
     const handleChange = (event) => {
         props.setFoodVoted(event.target.value);
     };

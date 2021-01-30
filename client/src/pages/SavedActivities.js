@@ -8,7 +8,7 @@ import ActivityResult from '../components/Activity/ActivityResult';
 // Show the activities list
 class SavedActivity extends Component {
     state = {
-        savedActivities: [],  
+        savedActivities: [],
         currentActivity: ''
     };
 
@@ -17,22 +17,35 @@ class SavedActivity extends Component {
         // const params = new URLSearchParams(this.props.location.search);
         // console.log(params);
         console.log(this.props);
-        this.setState({currentActivity: this.props.location.search.substring(1)});
-       
-        console.log(this.state.currentActivity);
-        API.getActivityById(this.props.location.search.substring(1)).then(res=> {
+        this.setState({ currentActivity: this.props.location.search.substring(1) });
 
-            this.setState({savedActivities : res.data});
+        API.getActivityById(this.props.location.search.substring(1)).then(res => {
+
+            this.setState({ savedActivities: res.data });
         });
     }
+
+    //fetch activity details
+    fetchActivities = () => {
+        API.getActivities().then(res => {
+            this.setState({ savedActivities: res.data });
+        });
+    }
+    //deletes the saved activity from database
+    handleDelete = (id) => {
+        API.deleteActivityById(this.props.location.search.substring(1))
+            .then((res) => this.fetchActivities())
+            .catch((err) => console.log(err));
+    };
 
     render() {
         return (
             <>
                 <ActivityResult
                     savedActivities={this.state.savedActivities}
+                    handleDelete={this.handleDelete}
                     currentActivity={this.state.currentActivity}
-                />       
+                />
             </>
         );
     }

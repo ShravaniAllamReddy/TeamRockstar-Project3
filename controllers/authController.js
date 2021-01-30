@@ -5,7 +5,6 @@ const db = require('../models');
 
 const signAsync = util.promisify(jwt.sign);
 
-//
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -75,21 +74,5 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-router.get('/user_data', function (req, res) {
-    if (!req.user) {
-        res.json({});
-    } else {
-        res.json({
-            email: req.user.email,
-            id: req.user.id,
-        });
-    }
-});
-
-// Route for logging user out
-router.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-});
 
 module.exports = router;

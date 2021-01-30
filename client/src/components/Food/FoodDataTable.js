@@ -3,20 +3,23 @@ import { DataGrid } from '@material-ui/data-grid';
 
 
 const columns = [
-    { field: 'name', headerName: 'Restaurant Options', width: 180 },
+    {
+        field: 'name',
+        headerName: 'Restaurant Options',
+        width: 180,
+    },
 ];
-
 
 export default function FoodDataTable(props) {
     return (
         <div style={{ height: 400, width: 400 }}>
-            <DataGrid rows={props.restaurantList} columns={columns} pageSize={5} checkboxSelection 
-                onRowSelected= { select => {
+            <DataGrid rows={props.restaurantList} columns={columns} pageSize={5} checkboxSelection
+                onRowSelected={select => {
                     console.log(select);
-                    if(select.isSelected){
+                    if (select.isSelected) {
                         props.setFoods(select.data.name);
                     }
-                    else{
+                    else {
                         props.removeFoods(select.data.name);
                     }
                 }}
