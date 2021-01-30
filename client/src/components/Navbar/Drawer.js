@@ -15,6 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/auth';
+// import Container from '@material-ui/core/Container';
 
 const drawerWidth = 240;
 
@@ -73,6 +74,11 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
+    textalign: {
+        display: 'flex',
+        justifyContent: 'center'
+    }
+
 }));
 
 export default function PersistentDrawerLeft() {
@@ -108,9 +114,11 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+
+                    <Typography variant="h5" className={classes.textalign} >
                         Event Planner
                     </Typography>
+
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -127,8 +135,16 @@ export default function PersistentDrawerLeft() {
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </div>
+
+                <List>
+
+                    <ListItem>
+                        Hello {getProfile().email}
+                    </ListItem>
+                </List>
                 <Divider />
                 <List>
+
                     <ListItem>
                         <Link to="/">Home</Link>
                     </ListItem>
@@ -157,7 +173,6 @@ export default function PersistentDrawerLeft() {
                     <>
                         <List>
                             <ListItem>
-                                Hello, {getProfile().email}
                                 <Link onClick={() => logout()} to="/">logout</Link>
                             </ListItem>
                         </List>

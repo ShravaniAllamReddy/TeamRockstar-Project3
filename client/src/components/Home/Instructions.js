@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     },
     header: {
         display: 'flex',
-        alignItems: 'center',
         height: 50,
         paddingLeft: theme.spacing(4),
         backgroundColor: theme.palette.background.default,
@@ -50,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     img: {
         height: 255,
         maxWidth: 400,
+        paddingLeft: theme.spacing(4),
         overflow: 'hidden',
         display: 'block',
         width: '100%',

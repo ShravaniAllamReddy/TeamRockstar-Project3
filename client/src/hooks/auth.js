@@ -57,7 +57,7 @@ const useAuth = () => {
 
     // grab the encoded user data here
     const getProfile = () => {
-        return jwtDecode(token);
+        return token?jwtDecode(token): {};
     };
 
     // call to get the token
