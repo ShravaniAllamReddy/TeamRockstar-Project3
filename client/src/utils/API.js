@@ -8,7 +8,7 @@ const API = {
         return axios.get('/api/activities');
     },
     getActivityById: function (id) {
-        return axios.get('/api/activities/'+ id );
+        return axios.get('/api/activities/getone/'+ id );
     },
     saveActivity: function (activityData) {
         return axios.post('/api/activities/', activityData);

@@ -18,8 +18,10 @@ class SavedActivity extends Component {
         // console.log(params);
         console.log(this.props);
         this.setState({currentActivity: this.props.location.search.substring(1)});
-        const currentActivity = this.state.currentActivity;
-        API.getActivityById(currentActivity).then(res=> {
+       
+        console.log(this.state.currentActivity);
+        API.getActivityById(this.props.location.search.substring(1)).then(res=> {
+
             this.setState({savedActivities : res.data});
         });
     }

@@ -53,12 +53,12 @@ function App() {
                 <Route path="/activities">
                     <Activities />
                 </Route>
-                <Route path="/savedactivities" component={SavedActivities}/>
-                    
-                <Route path="/activities/:activityid" component={Activities}>
-                </Route>
+                <Route path="/savedactivities" component={SavedActivities} />
+
+                {/* <Route path="/activities/:activityid" component={Activities}> */}
+                {/* </Route> */}
             </Switch>
-        </Router>
+        </Router >
     );
 }
 
