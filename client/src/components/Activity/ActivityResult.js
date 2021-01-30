@@ -47,7 +47,7 @@ const ActivityResult = (props) => {
     };
 
     const activity = props.savedActivities;
-
+    console.log(activity);
     return activity.hasOwnProperty('_id') ? (
 
         <div className="card">
