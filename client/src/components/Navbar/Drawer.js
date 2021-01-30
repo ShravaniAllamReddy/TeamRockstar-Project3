@@ -149,7 +149,7 @@ export default function PersistentDrawerLeft() {
                 <Divider />
                 <List>
                     <ListItem>
-                        <Link to="/voteresults">VoteResults</Link>
+                        <Link to="/votes">VoteResults</Link>
                     </ListItem>
                 </List>
                 <Divider />
