@@ -147,6 +147,12 @@ export default function PersistentDrawerLeft() {
                     </ListItem>
                 </List>
                 <Divider />
+                <List>
+                    <ListItem>
+                        <Link to="/votes">VoteResults</Link>
+                    </ListItem>
+                </List>
+                <Divider />
                 {isLoggedIn() ?
                     <>
                         <List>

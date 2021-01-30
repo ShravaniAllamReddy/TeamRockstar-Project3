@@ -16,6 +16,9 @@ const API = {
     getMovieDetails: function(){
         return axios.get('/api/movies');
     },
+    getVotes: function(){
+        return axios.get('/api/votes');
+    }
 
   
 };

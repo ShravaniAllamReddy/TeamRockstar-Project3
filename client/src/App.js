@@ -8,7 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Activities from './pages/Activities';
 import SavedActivities from './pages/SavedActivities';
-// import Restaurants from './pages/Restaurants';
+import Votes from './pages/Votes';
 
 function App() {
     // Pull auth token from storage, in case you refresh the page
@@ -52,6 +52,9 @@ function App() {
                 </Route>
                 <Route path="/activities">
                     <Activities />
+                </Route>
+                <Route path="/votes">
+                    <Votes />
                 </Route>
                 <Route path="/savedactivities" component={SavedActivities} />
 
