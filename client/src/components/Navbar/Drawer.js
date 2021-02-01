@@ -137,14 +137,12 @@ export default function PersistentDrawerLeft() {
                 </div>
 
                 <List>
-
                     <ListItem>
                         Hello {getProfile().email}
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-
                     <ListItem>
                         <Link to="/">Home</Link>
                     </ListItem>
@@ -156,7 +154,6 @@ export default function PersistentDrawerLeft() {
                     </ListItem>
                 </List>
                 <Divider />
-
                 <List>
                     <ListItem>
                         <Link to="/savedactivities">Activities</Link>
