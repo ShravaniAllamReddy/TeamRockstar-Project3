@@ -15,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/auth';
-// import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container';
 
 const drawerWidth = 240;
 
@@ -74,11 +74,10 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
-    textalign: {
+    textAlign: {
         display: 'flex',
-        justifyContent: '',
-        marginRight: 0,
-        padding: theme.spacing(0)
+        justifyContent: 'center',
+        marginRight: theme.spacing(6),
 
     }
 
@@ -117,11 +116,11 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-
-                    <Typography variant="h5" className={classes.textalign} >
-                        Event Planner
-                    </Typography>
-
+                    <Container>
+                        <Typography variant="h5" className={classes.textAlign} >
+                        Movie-Night
+                        </Typography>
+                    </Container>
 
                 </Toolbar>
             </AppBar>

@@ -9,29 +9,24 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 const tutorialSteps = [
     {
-        label: 'Step 1',
+        label: 'Step 1: Create your movie night by selecting the food and movies to vote on',
         imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      'img/step1.png',
     },
     {
-        label: 'Step 2',
+        label: 'Step 2: send the link to your friends and family to vote.',
         imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      'img/step2.png',
     },
     {
-        label: 'Step 3',
+        label: 'Step 3: Take a vote yourself.',
+        imgPath:
+      'img/step3.png',
+    },
+    {
+        label: 'Step 4: Check the vote results for the winners!',
         imgPath:
       'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-    },
-    {
-        label: 'Step 4',
-        imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
-    },
-    {
-        label: 'Step 5',
-        imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
     },
 ];
 
@@ -39,17 +34,17 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 400,
         flexGrow: 1,
+        backgroundColor: theme.palette.background.default,
+        marginTop: theme.spacing(4)
     },
     header: {
         display: 'flex',
         height: 50,
-        paddingLeft: theme.spacing(4),
-        backgroundColor: theme.palette.background.default,
+        // backgroundColor: theme.palette.background.default,
     },
     img: {
         height: 255,
         maxWidth: 400,
-        paddingLeft: theme.spacing(4),
         overflow: 'hidden',
         display: 'block',
         width: '100%',
