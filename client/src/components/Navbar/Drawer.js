@@ -76,7 +76,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textalign: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: '',
+        marginRight: 0,
+        padding: theme.spacing(0)
+
     }
 
 }));
@@ -119,6 +122,7 @@ export default function PersistentDrawerLeft() {
                         Event Planner
                     </Typography>
 
+
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -137,14 +141,12 @@ export default function PersistentDrawerLeft() {
                 </div>
 
                 <List>
-
                     <ListItem>
                         Hello {getProfile().email}
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-
                     <ListItem>
                         <Link to="/">Home</Link>
                     </ListItem>
@@ -156,7 +158,6 @@ export default function PersistentDrawerLeft() {
                     </ListItem>
                 </List>
                 <Divider />
-
                 <List>
                     <ListItem>
                         <Link to="/savedactivities">Activities</Link>

@@ -6,13 +6,13 @@ const columns = [
     {
         field: 'name',
         headerName: 'Restaurant Options',
-        width: 180,
+        width: 180
     },
 ];
 
 export default function FoodDataTable(props) {
     return (
-        <div style={{ height: 400, width: 400 }}>
+        <div style={{ height: 400, width: 370 , fontWeight: 900 }}>
             <DataGrid rows={props.restaurantList} columns={columns} pageSize={5} checkboxSelection
                 onRowSelected={select => {
                     console.log(select);
