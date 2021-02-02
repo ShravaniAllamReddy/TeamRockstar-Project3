@@ -1,0 +1,7 @@
+.MuiDataGrid-root .MuiDataGrid-colCellTitle {
+    overflow: hidden;
+    font-weight: 900;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ 

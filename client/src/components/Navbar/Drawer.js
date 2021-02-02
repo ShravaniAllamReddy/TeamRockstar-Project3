@@ -76,7 +76,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textalign: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: '',
+        marginRight: 0,
+        padding: theme.spacing(0)
+
     }
 
 }));
@@ -118,6 +121,7 @@ export default function PersistentDrawerLeft() {
                     <Typography variant="h5" className={classes.textalign} >
                         Event Planner
                     </Typography>
+
 
                 </Toolbar>
             </AppBar>

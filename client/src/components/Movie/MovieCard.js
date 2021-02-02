@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'inline',
     },
     cover: {
-        width: 100,
+        width: 50,
     }
 }));
 
@@ -35,7 +35,7 @@ export default function MovieCard(props) {
             />
 
             <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5">
+                <Typography component="h7" variant="h7">
                     {props.title}
                 </Typography>
 

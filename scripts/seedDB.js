@@ -6,7 +6,7 @@ mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/reactactivities'
 );
 
-
+//sample activity seed
 const activitySeed = [
     {
         name: 'lets eat some yummy food and watch a movie tonight',

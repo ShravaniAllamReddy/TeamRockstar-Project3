@@ -2,6 +2,7 @@ const db = require('../models');
 const router = require('express').Router();
 const isAuthenticated = require('../utils/middleware').isAuthenticated;
 
+// to get the votes
 router.get('/', isAuthenticated, function(req, res) {
     db.Vote.find()
         .populate('user')

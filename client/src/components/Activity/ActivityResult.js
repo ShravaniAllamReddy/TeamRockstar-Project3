@@ -57,7 +57,7 @@ const ActivityResult = (props) => {
                     <h3 className="font-weight-bold">{activity.name}</h3>
 
                     <p> {activity.description}</p>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h5" variant="h6">
                         Near By Restaurants
                     </Typography>
                     <FoodOptions
@@ -66,7 +66,7 @@ const ActivityResult = (props) => {
                         foodVoted={foodVoted}
                     />
                     <hr />
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h5" variant="h6">
                         Popular Movies on 'The Movie DB'
                     </Typography>
                     <MovieOptions
