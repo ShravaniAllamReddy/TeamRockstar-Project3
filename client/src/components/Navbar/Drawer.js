@@ -118,7 +118,7 @@ export default function PersistentDrawerLeft() {
                     </IconButton>
                     <Container>
                         <Typography variant="h5" className={classes.textAlign} >
-                        Movie-Night
+                            Movie-Night
                         </Typography>
                     </Container>
 
@@ -139,38 +139,40 @@ export default function PersistentDrawerLeft() {
                     </IconButton>
                 </div>
 
-                <List>
-                    <ListItem>
-                        Hello {getProfile().email}
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/">Home</Link>
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/activities">Create Activity</Link>
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/savedactivities">Activities</Link>
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <Link to="/votes">VoteResults</Link>
-                    </ListItem>
-                </List>
-                <Divider />
+
                 {isLoggedIn() ?
                     <>
+                        <List>
+                            <ListItem>
+                                Hello {getProfile().email}
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <Link to="/">Home</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <Link to="/activities">Create Activity</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <Link to="/savedactivities">Activities</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <Link to="/votes">VoteResults</Link>
+                            </ListItem>
+                        </List>
+                        <Divider />
+
                         <List>
                             <ListItem>
                                 <Link onClick={() => logout()} to="/">logout</Link>
