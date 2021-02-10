@@ -10,6 +10,7 @@ import Activities from './pages/Activities';
 import SavedActivities from './pages/SavedActivities';
 import Votes from './pages/Votes';
 
+
 function App() {
     // Pull auth token from storage, in case you refresh the page
     const { getToken , logout } = useAuth();
@@ -56,8 +57,6 @@ function App() {
                 </Route>
                 <Route path="/savedactivities" component={SavedActivities} />
 
-                {/* <Route path="/activities/:activityid" component={Activities}> */}
-                {/* </Route> */}
             </Switch>
         </Router >
     );
