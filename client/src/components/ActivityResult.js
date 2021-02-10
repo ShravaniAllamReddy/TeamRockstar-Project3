@@ -38,7 +38,7 @@ function ActivityResult(props) {
         API.getActivityById(id)
             .then(res => setActivity(res.data))
             .catch(err => console.log(err));
-    }, []);
+    });
 
     // to post the votes
     const handleSubmit = (event) => {
