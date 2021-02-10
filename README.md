@@ -37,5 +37,5 @@
 
  * GitHub: [Luis Diaz](http://www.github.com/luis26308) 
  * GitHub: [Shravani Allam Reddy](https://github.com/ShravaniAllamReddy) 
- * GitHub: [Bryan Lilburn](http://www.github.com/luis26308) 
+ * GitHub: [Bryan Lilburn](https://github.com/blilburn) 
   
