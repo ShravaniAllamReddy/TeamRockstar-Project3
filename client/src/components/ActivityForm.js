@@ -8,8 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useState } from 'react';
 import axios from 'axios';
-import FoodDataTable from '../Food/FoodDataTable';
-import MovieDataTable from '../Movie/MovieDataTable';
+import FoodDataTable from './FoodDataTable';
+import MovieDataTable from './MovieDataTable';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
