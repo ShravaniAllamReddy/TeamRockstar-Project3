@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +13,7 @@ import Votes from './pages/Votes';
 
 function App() {
     // Pull auth token from storage, in case you refresh the page
-    const { getToken , logout } = useAuth();
+    const { getToken, logout } = useAuth();
     axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
     // A nice trick that if we EVER get back a 401, will pop the token off
@@ -55,7 +55,9 @@ function App() {
                 <Route path="/votes">
                     <Votes />
                 </Route>
-                <Route path="/savedactivities" component={SavedActivities} />
+                <Route path="/savedactivities">
+                    <SavedActivities />
+                </Route>
 
             </Switch>
         </Router >

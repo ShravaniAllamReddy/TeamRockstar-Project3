@@ -168,12 +168,6 @@ export default function PersistentDrawerLeft() {
                         <Divider />
                         <List>
                             <ListItem>
-                                <Link to="/test">List of Activities</Link>
-                            </ListItem>
-                        </List>
-                        <Divider />
-                        <List>
-                            <ListItem>
                                 <Link to="/votes">VoteResults</Link>
                             </ListItem>
                         </List>
