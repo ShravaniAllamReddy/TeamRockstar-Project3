@@ -1,54 +1,27 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import React from 'react';
-import { Component } from 'react';
-import API from '../utils/API';
-import ActivityResult from '../components/Activity/ActivityResult';
 
-
-// hit the API
-// Show the activities list
-class SavedActivity extends Component {
-    state = {
-        savedActivities: [],
-        currentActivity: ''
-    };
-
-    //default method when page loads
-    componentDidMount() {
-        // const params = new URLSearchParams(this.props.location.search);
-        // console.log(params);
-        console.log(this.props);
-        this.setState({ currentActivity: this.props.location.search.substring(1) });
-
-        API.getActivityById(this.props.location.search.substring(1)).then(res => {
-
-            this.setState({ savedActivities: res.data });
+export default function Test() {
+    const [activities, setActivities] = useState([]);
+    useEffect(() => {
+        fetchActivities();
+    }, []);
+    const fetchActivities = async () => {
+        axios.get('/api/activities').then(({ data }) => {
+            setActivities(data);
         });
-    }
-
-    //fetch activity details
-    fetchActivities = () => {
-        API.getActivities().then(res => {
-            this.setState({ savedActivities: res.data });
-        });
-    }
-    //deletes the saved activity from database
-    handleDelete = (id) => {
-        API.deleteActivityById(this.props.location.search.substring(1))
-            .then((res) => this.fetchActivities())
-            .catch((err) => console.log(err));
     };
+    return (
+        <>
+            <h3>Activites</h3>
+            {activities.map(activity =>
 
-    render() {
-        return (
-            <>
-                <ActivityResult
-                    savedActivities={this.state.savedActivities}
-                    handleDelete={this.handleDelete}
-                    currentActivity={this.state.currentActivity}
-                />
-            </>
-        );
-    }
+                <Link to={`/activity/${activity._id}`}>
+                    Go to activity {activity.name} </Link>)}
+
+
+        </>
+    );
 }
-
-export default SavedActivity;
