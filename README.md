@@ -1,11 +1,11 @@
   # Movie-Night
    
   ## Live Link
-  https://foodandmoviepolls.herokuapp.com/
+  - [Movie Night app](https://foodandmoviepolls.herokuapp.com/)
   
   ## Table Of Contents
   - [Description](#Description)  
-  - [Built-With](#Built With)  
+  - [Built With](#BuiltWith)  
   - [Installation](#installation)  
   - [Usage](#Usage)  
   - [License](#License)  
@@ -35,7 +35,7 @@
   ## Contributors
   Check out our other work   
 
-  GitHub: [Luis Diaz](http://www.github.com/luis26308) 
-  GitHub: [Shravani Allam Reddy](https://github.com/ShravaniAllamReddy) 
-  GitHub: [Bryan Lilburn](http://www.github.com/luis26308) 
+ * GitHub: [Luis Diaz](http://www.github.com/luis26308) 
+ * GitHub: [Shravani Allam Reddy](https://github.com/ShravaniAllamReddy) 
+ * GitHub: [Bryan Lilburn](http://www.github.com/luis26308) 
   
