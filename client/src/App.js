@@ -6,7 +6,8 @@ import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Activities from './pages/Activities';
+import MovieFood from './pages/MovieFood';
+import ActivityDetails from './components/ActivityResult';
 import SavedActivities from './pages/SavedActivities';
 import Votes from './pages/Votes';
 
@@ -49,11 +50,14 @@ function App() {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/activities">
-                    <Activities />
+                <Route path="/moviefood">
+                    <MovieFood />
                 </Route>
                 <Route path="/votes">
                     <Votes />
+                </Route>
+                <Route exact path="/activities/:id">
+                    <ActivityDetails />
                 </Route>
                 <Route path="/savedactivities">
                     <SavedActivities />
