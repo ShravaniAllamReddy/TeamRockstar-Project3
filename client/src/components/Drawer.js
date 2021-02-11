@@ -156,7 +156,7 @@ export default function PersistentDrawerLeft() {
                         <Divider />
                         <List>
                             <ListItem>
-                                <Link to="/activities">Create Activity</Link>
+                                <Link to="/moviefood">Create Activity</Link>
                             </ListItem>
                         </List>
                         <Divider />
