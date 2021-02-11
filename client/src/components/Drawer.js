@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
-import useAuth from '../../hooks/auth';
+import useAuth from '../hooks/auth';
 import Container from '@material-ui/core/Container';
 
 const drawerWidth = 240;
@@ -156,7 +156,7 @@ export default function PersistentDrawerLeft() {
                         <Divider />
                         <List>
                             <ListItem>
-                                <Link to="/activities">Create Activity</Link>
+                                <Link to="/moviefood">Create Activity</Link>
                             </ListItem>
                         </List>
                         <Divider />

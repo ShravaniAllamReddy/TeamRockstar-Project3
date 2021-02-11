@@ -10,7 +10,7 @@ const API = {
     getActivityById: function (id) {
         return axios.get('/api/activities/getone/'+ id );
     },
-    deleteActivityById: function (id) {
+    deleteActivity: function (id) {
         return axios.delete('/api/activities/'+ id );
     },
     getMovieDetails: function(){

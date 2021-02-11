@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -6,13 +6,15 @@ import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Activities from './pages/Activities';
+import MovieFood from './pages/MovieFood';
+import ActivityDetails from './components/ActivityResult';
 import SavedActivities from './pages/SavedActivities';
 import Votes from './pages/Votes';
 
+
 function App() {
     // Pull auth token from storage, in case you refresh the page
-    const { getToken , logout } = useAuth();
+    const { getToken, logout } = useAuth();
     axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
     // A nice trick that if we EVER get back a 401, will pop the token off
@@ -48,16 +50,19 @@ function App() {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/activities">
-                    <Activities />
+                <Route path="/moviefood">
+                    <MovieFood />
                 </Route>
                 <Route path="/votes">
                     <Votes />
                 </Route>
-                <Route path="/savedactivities" component={SavedActivities} />
+                <Route exact path="/activities/:id">
+                    <ActivityDetails />
+                </Route>
+                <Route path="/savedactivities">
+                    <SavedActivities />
+                </Route>
 
-                {/* <Route path="/activities/:activityid" component={Activities}> */}
-                {/* </Route> */}
             </Switch>
         </Router >
     );

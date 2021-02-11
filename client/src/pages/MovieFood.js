@@ -1,11 +1,11 @@
 import React from 'react';
 import { Component } from 'react';
 import API from '../utils/API';
-import ActivityForm from '../components/Activity/ActivityForm';
+import ActivityForm from '../components/ActivityForm';
 
 // hit the API
 // Show the activities list
-class Activity extends Component {
+class MovieFood extends Component {
     state = {
         restaurantList: [],
         movieList: []
@@ -62,4 +62,4 @@ class Activity extends Component {
     }
 }
 
-export default Activity;
+export default MovieFood;

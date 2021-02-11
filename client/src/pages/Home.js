@@ -1,5 +1,5 @@
-import About from '../components/Home/About';
-import Instructions from '../components/Home/Instructions';
+import About from '../components/About';
+import Instructions from '../components/Instructions';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
