@@ -51,6 +51,7 @@ function ActivityResult(props) {
         await axios.post(
             '/api/votes',
             {
+                activity: activity,
                 foodVoted: foodVoted,
                 movieVoted: movieVoted,
             }

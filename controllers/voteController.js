@@ -3,9 +3,9 @@ const router = require('express').Router();
 const isAuthenticated = require('../utils/middleware').isAuthenticated;
 
 // to get the votes
-router.get('/', isAuthenticated, function(req, res) {
+router.get('/', isAuthenticated, function (req, res) {
     db.Vote.find()
-        .populate('user')
+        .populate('user activity')
         .then(dbModel => res.json(dbModel));// .catch(err => res.status(422).json(err));
 });
 

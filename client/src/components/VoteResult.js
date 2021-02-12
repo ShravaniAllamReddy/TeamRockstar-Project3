@@ -6,9 +6,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-// import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -30,8 +30,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
     table: {
-        minWidth: 420
+        minWidth: 500
     },
+ 
 
 });
 
@@ -40,35 +41,36 @@ export default function VoteResult(props) {
     const classes = useStyles();
 
     return (
-        <Grid item xs={12}>
-            <Grid container>
-                <Grid item>
-                    <TableContainer>
+        <Container>
+            <Grid item xs={12}>
+                <Grid container spacing={3}>
+
+                    <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-
-                                    <StyledTableCell align="center" >Username</StyledTableCell>
-                                    <StyledTableCell align="center">Restaurant Voted</StyledTableCell>
-                                    <StyledTableCell align="center">Movie Voted</StyledTableCell>
-
+                                    <StyledTableCell align="left">Event Name</StyledTableCell>
+                                    <StyledTableCell align="left">User Name</StyledTableCell>
+                                    <StyledTableCell align="left">Restaurant Voted</StyledTableCell>
+                                    <StyledTableCell align="left">Movie Voted</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {props.savedVotes.map((vote) => (
                                     <StyledTableRow key={vote._id}>
-
-                                        <StyledTableCell align="center">{vote.user.email}</StyledTableCell>
-                                        <StyledTableCell align="center">{vote.foodVoted}</StyledTableCell>
-                                        <StyledTableCell align="center">{vote.movieVoted}</StyledTableCell>
+                                        <StyledTableCell align="left">{vote.activity.name}</StyledTableCell>
+                                        <StyledTableCell align="left">{vote.user.email}</StyledTableCell>
+                                        <StyledTableCell align="left">{vote.foodVoted}</StyledTableCell>
+                                        <StyledTableCell align="left">{vote.movieVoted}</StyledTableCell>
                                     </StyledTableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
+
                 </Grid>
             </Grid>
-        </Grid>
+        </Container>
     );
 }
 
