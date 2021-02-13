@@ -12,7 +12,7 @@ function exampleReducer(state, action) {
     }
 }
 
-const DeleteBtn = () => {
+const DeleteBtn = (props) => {
     const [state, dispatch] = React.useReducer(exampleReducer, {
         open: false,
         size: undefined,
@@ -22,9 +22,8 @@ const DeleteBtn = () => {
     return (
         <>
             <Button onClick={() => dispatch({ type: 'open', size: 'mini' })}>
-        Mini
+        Delete
             </Button>
-           
 
             <Modal
                 size={size}
@@ -39,7 +38,7 @@ const DeleteBtn = () => {
                     <Button negative onClick={() => dispatch({ type: 'close' })}>
             No
                     </Button>
-                    <Button positive onClick={() => dispatch({ type: 'close' })}>
+                    <Button positive onClick={() => props.deleteActivity(props.activityId)}>
             Yes
                     </Button>
                 </Modal.Actions>

@@ -58,7 +58,11 @@ export default function SavedActivities() {
                                     <h2>{activity.name} </h2>
                                 </strong>
                             </Link>
-                            <DeleteBtn onClick={() => deleteActivity(activity._id)} />
+                            <DeleteBtn
+                                activityId={activity._id}
+                                deleteActivity={deleteActivity}
+
+                            />
                         </ListItem>
                     ))}
                 </List>
