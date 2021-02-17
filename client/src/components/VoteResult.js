@@ -30,10 +30,9 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
     table: {
-        minWidth: 500
+        minWidth: 300
     },
  
-
 });
 
 //to display voteresults
