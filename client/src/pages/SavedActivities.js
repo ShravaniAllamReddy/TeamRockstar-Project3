@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
-import DeleteBtn from '../components/DeleteBtn';
-// import Jumbotron from '../components/Jumbotron';
 import Container from '@material-ui/core/Container';
 import API from '../utils/API';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import { List, ListItem } from '../components/List';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { Button, List } from 'semantic-ui-react';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.primary,
         fontSize: 23
     },
+    delete: {
+        color: '#e74944',
+    }
 }));
 export default function SavedActivities() {
     const classes = useStyles();
@@ -50,20 +53,19 @@ export default function SavedActivities() {
             </Grid>
 
             {activities.length ? (
-                <List>
+                <List divided verticalAlign='middle'>
                     {activities.map(activity => (
-                        <ListItem key={activity._id}>
-                            <Link to={'/activities/' + activity._id}>
-                                <strong>
-                                    <h2>{activity.name} </h2>
-                                </strong>
-                            </Link>
-                            <DeleteBtn
-                                activityId={activity._id}
-                                deleteActivity={deleteActivity}
+                        <List.Item key={activity._id}>
 
-                            />
-                        </ListItem>
+                            <Link className={classes.paper} to={'/activities/' + activity._id}>
+
+                                {activity.name}
+
+                            </Link>
+                            <List.Content floated='right'>
+                                <Button negative onClick={() => deleteActivity(activity._id)}>  Delete </Button>
+                            </List.Content>
+                        </List.Item>
                     ))}
                 </List>
             ) : (
@@ -74,3 +76,12 @@ export default function SavedActivities() {
 
     );
 }
+
+// <List divided verticalAlign='middle'>
+// <List.Item>
+//   <List.Content floated='right'>
+//     <Button>Add</Button>
+//   </List.Content>
+//   <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
+//   <List.Content>Lena</List.Content>
+// </List.Item>
