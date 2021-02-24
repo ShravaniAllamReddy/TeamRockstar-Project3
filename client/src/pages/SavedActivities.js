@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import DeleteBtn from '../components/DeleteBtn';
-// import Jumbotron from '../components/Jumbotron';
 import Container from '@material-ui/core/Container';
 import API from '../utils/API';
 import List from '@material-ui/core/List';
@@ -58,11 +57,7 @@ export default function SavedActivities() {
                                     <h2>{activity.name} </h2>
                                 </strong>
                             </Link>
-                            <DeleteBtn
-                                activityId={activity._id}
-                                deleteActivity={deleteActivity}
-
-                            />
+                            <DeleteBtn onClick={() => deleteActivity(activity._id)} />
                         </ListItem>
                     ))}
                 </List>
