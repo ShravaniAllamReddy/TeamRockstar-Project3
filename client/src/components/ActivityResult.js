@@ -9,7 +9,29 @@ import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import API from '../utils/API';
 import Container from '@material-ui/core/Container';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 
+
+function SimpleDialog(props) {
+
+    const { onClose, open } = props;
+    const handleClose = () => {
+        onClose();
+    };
+    return (
+        <Dialog onClose={handleClose} open={open} fullWidth 
+            maxWidth="sm" 
+            PaperProps={{
+                style: {
+                    height:'10%'
+                
+                },
+            }} >
+            <DialogContent>Your choice is being posted</DialogContent>
+        </Dialog>
+    );
+}
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -30,7 +52,16 @@ function ActivityResult(props) {
     const [activity, setActivity] = useState({});
     const [foodVoted, setFoodVoted] = useState('');
     const [movieVoted, setMovieVoted] = useState('');
+    const [open, setOpen] = React.useState(false);
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (value) => {
+        setOpen(false);
+
+    };
     // When this component mounts, grab the activity with the _id of props.match.params.id
     // e.g. localhost:3000/activities/activityId
     const { id } = useParams();
@@ -71,29 +102,32 @@ function ActivityResult(props) {
                         <Typography component="h5" variant="h6">
                             Near By Restaurants
                         </Typography>
-                        <FoodOptions
-                            activity={activity}
-                            setFoodVoted={setFoodVoted}
-                            foodVoted={foodVoted}
-                        />
-                        <hr />
-                        <Typography component="h5" variant="h6">
+                        <form onSubmit={handleSubmit}>
+                            <FoodOptions
+                                activity={activity}
+                                setFoodVoted={setFoodVoted}
+                                foodVoted={foodVoted}
+                            />
+                            <hr />
+                            <Typography component="h5" variant="h6">
                             Popular Movies on 'The Movie DB'
-                        </Typography>
-                        <MovieOptions
-                            activity={activity}
-                            setMovieVoted={setMovieVoted}
-                            movieVoted={movieVoted}
-                        />
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            onClick={handleSubmit}
-                        >
+                            </Typography>
+                            <MovieOptions
+                                activity={activity}
+                                setMovieVoted={setMovieVoted}
+                                movieVoted={movieVoted}
+                            />
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                onClick={handleClickOpen}
+                            >
                             Submit
-                        </Button>
+                            </Button>
+                            <SimpleDialog open={open} onClose={handleClose}/>
+                        </form>
 
                     </div>
 
