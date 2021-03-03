@@ -5,7 +5,7 @@ import ActivityForm from '../components/ActivityForm';
 
 // hit the API
 // Show the activities list
-class MovieFood extends Component {
+class CreateActivity extends Component {
     state = {
         restaurantList: [],
         movieList: []
@@ -62,4 +62,4 @@ class MovieFood extends Component {
     }
 }
 
-export default MovieFood;
+export default CreateActivity;

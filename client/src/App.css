@@ -1,28 +1,2 @@
 
 
-  
-/*Delete Confirmation Modal*/
-
-/* device width greater than or equal to 768px*/
-@media only screen and (min-width: 768px){
-    .ui.mini.modal {
-        width: calc(30%) !important;
-        height: calc(30%) !important;
-        margin-left: 30% !important;
-        top:20%;
-
-    }
-}
-
-
-/* device width less than or equal to 767px*/
-@media only screen and (max-width: 767px){
-    .ui.mini.modal {
-        width: calc(80%) !important;
-        height: calc(30%) !important;
-        margin-left: 10% !important;
-        top:20%;
-
-    }
-} 
-
