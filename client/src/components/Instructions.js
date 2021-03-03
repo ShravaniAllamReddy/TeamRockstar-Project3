@@ -9,7 +9,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 const tutorialSteps = [
     {
-        label: 'Step 1: Create your movie night by selecting the food and movies to vote on',
+        label: 'Step 1: Create your movie night by selecting the food and movies(atmost 4 options) to vote on',
         imgPath:
       'img/step1.png',
     },
