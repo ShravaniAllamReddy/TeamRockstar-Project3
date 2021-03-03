@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './pages/Home';
@@ -50,18 +50,18 @@ function App() {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/createactivity">
+                <PrivateRoute exact path="/createactivity">
                     <CreateActivity />
-                </Route>
-                <Route path="/votes">
+                </PrivateRoute>
+                <PrivateRoute exact path="/votes">
                     <Votes />
-                </Route>
-                <Route exact path="/activities/:id">
+                </PrivateRoute>
+                <PrivateRoute exact path="/activities/:id">
                     <ActivityDetails />
-                </Route>
-                <Route path="/savedactivities">
+                </PrivateRoute>
+                <PrivateRoute path="/savedactivities">
                     <SavedActivities />
-                </Route>
+                </PrivateRoute>
 
             </Switch>
         </Router >
@@ -69,26 +69,26 @@ function App() {
 }
 
 //Yanked straight from the react-router docs for redirects
-// function PrivateRoute({ children, ...rest }) {
-//     const { isLoggedIn } = useAuth();
-//     return (
-//         <Route
-//             {...rest}
-//             render={({ location }) =>
-//                 isLoggedIn() ? (
-//                     children
-//                 ) :
-//                     (
-//                         <Redirect
-//                             to={{
-//                                 pathname: '/login',
-//                                 state: { from: location }
-//                             }}
-//                         />
-//                     )
-//             }
-//         />
-//     );
-// }
+function PrivateRoute({ children, ...rest }) {
+    const { isLoggedIn } = useAuth();
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                isLoggedIn() ? (
+                    children
+                ) :
+                    (
+                        <Redirect
+                            to={{
+                                pathname: '/login',
+                                state: { from: location }
+                            }}
+                        />
+                    )
+            }
+        />
+    );
+}
 
 export default App;
