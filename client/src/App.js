@@ -6,7 +6,7 @@ import useAuth from './hooks/auth';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import MovieFood from './pages/MovieFood';
+import CreateActivity from './pages/CreateActivity';
 import ActivityDetails from './components/ActivityResult';
 import SavedActivities from './pages/SavedActivities';
 import Votes from './pages/Votes';
@@ -50,8 +50,8 @@ function App() {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/moviefood">
-                    <MovieFood />
+                <Route path="/createactivity">
+                    <CreateActivity />
                 </Route>
                 <Route path="/votes">
                     <Votes />
