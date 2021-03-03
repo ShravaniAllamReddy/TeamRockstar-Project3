@@ -139,7 +139,30 @@ export default function PersistentDrawerLeft() {
                     </IconButton>
                 </div>
 
-
+                <List>
+                    <ListItem>
+                        <Link to="/">Home</Link>
+                    </ListItem>
+                </List>
+                <Divider />
+                <List>
+                    <ListItem>
+                        <Link to="/createactivity">Create Activity</Link>
+                    </ListItem>
+                </List>
+                <Divider />
+                <List>
+                    <ListItem>
+                        <Link to="/savedactivities">Activities</Link>
+                    </ListItem>
+                </List>
+                <Divider />
+                <List>
+                    <ListItem>
+                        <Link to="/votes">VoteResults</Link>
+                    </ListItem>
+                </List>
+                <Divider />
                 {isLoggedIn() ?
                     <>
                         <List>
@@ -148,30 +171,7 @@ export default function PersistentDrawerLeft() {
                             </ListItem>
                         </List>
                         <Divider />
-                        <List>
-                            <ListItem>
-                                <Link to="/">Home</Link>
-                            </ListItem>
-                        </List>
-                        <Divider />
-                        <List>
-                            <ListItem>
-                                <Link to="/createactivity">Create Activity</Link>
-                            </ListItem>
-                        </List>
-                        <Divider />
-                        <List>
-                            <ListItem>
-                                <Link to="/savedactivities">Activities</Link>
-                            </ListItem>
-                        </List>
-                        <Divider />
-                        <List>
-                            <ListItem>
-                                <Link to="/votes">VoteResults</Link>
-                            </ListItem>
-                        </List>
-                        <Divider />
+                        
 
                         <List>
                             <ListItem>
