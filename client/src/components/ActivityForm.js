@@ -10,6 +10,10 @@ import { useState } from 'react';
 import axios from 'axios';
 import FoodDataTable from './FoodDataTable';
 import MovieDataTable from './MovieDataTable';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+// import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -24,8 +28,29 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+  
 }));
 
+function SimpleDialog(props) {
+    
+    const { onClose, open } = props;
+    const handleClose = () => {
+        onClose();
+    };
+    return (
+        <Dialog 
+            fullWidth 
+            maxWidth="sm" 
+            PaperProps={{
+                style: {
+                    height:'10%'
+                    
+                },
+            }} onClose={handleClose} open={open} >
+            <DialogContent>Activity is created.Go check Activities page</DialogContent>
+        </Dialog>
+    );
+}
 // display food and movie options in table format from zomato API and movie API with an option to check from those options (host)
 const ActivityForm = (props) => {
     const classes = useStyles();
@@ -34,14 +59,23 @@ const ActivityForm = (props) => {
     const [description, setDescription] = useState('');
     const [foodOption, setFoodOption] = useState([]);
     const [movieOption, setMovieOption] = useState([]);
+    const [open, setOpen] = React.useState(false);
 
-    console.log(restaurantList);
-    console.log(movieList);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (value) => {
+        setOpen(false);
+
+    };
+    // console.log(restaurantList);
+    // console.log(movieList);
     const handleSubmit = (event) => {
         event.preventDefault();
         submitActivity();
     };
-
+    
     const submitActivity = async () => {
         let foodOption1 = '',
             foodOption2 = '',
@@ -65,22 +99,19 @@ const ActivityForm = (props) => {
             movieOption3 = movieOption[2];
             movieOption4 = movieOption[3];
         }
-     
-        await axios.post(
-            '/api/activities',   
-            {
-                name: name,
-                description: description,
-                foodOption1: foodOption1,
-                foodOption2: foodOption2,
-                foodOption3: foodOption3,
-                foodOption4: foodOption4,
-                movieOption1: movieOption1,
-                movieOption2: movieOption2,
-                movieOption3: movieOption3,
-                movieOption4: movieOption4,
-            }
-        );
+
+        await axios.post('/api/activities', {
+            name: name,
+            description: description,
+            foodOption1: foodOption1,
+            foodOption2: foodOption2,
+            foodOption3: foodOption3,
+            foodOption4: foodOption4,
+            movieOption1: movieOption1,
+            movieOption2: movieOption2,
+            movieOption3: movieOption3,
+            movieOption4: movieOption4,
+        });
         setName('');
         setDescription('');
     };
@@ -103,12 +134,10 @@ const ActivityForm = (props) => {
         setMovieOption(filteredMovies);
     };
 
-
     return (
         <Container component="main">
             <CssBaseline />
             <div className={classes.paper}>
-        
                 <Typography component="h1" variant="h5">
                     Create Event
                 </Typography>
@@ -156,10 +185,12 @@ const ActivityForm = (props) => {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        onClick={handleClickOpen}
                         className={classes.submit}
                     >
                         Submit
                     </Button>
+                    <SimpleDialog open={open} onClose={handleClose}/>
                 </form>
             </div>
             <Box mt={8}></Box>

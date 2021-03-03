@@ -47,8 +47,7 @@ export default function VoteResult(props) {
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="customized table">
                             <TableHead>
-                                <TableRow>
-                                    <StyledTableCell align="left">Event Name</StyledTableCell>
+                                <TableRow>        
                                     <StyledTableCell align="left">User Name</StyledTableCell>
                                     <StyledTableCell align="left">Restaurant Voted</StyledTableCell>
                                     <StyledTableCell align="left">Movie Voted</StyledTableCell>
@@ -57,7 +56,6 @@ export default function VoteResult(props) {
                             <TableBody>
                                 {props.savedVotes.map((vote) => (
                                     <StyledTableRow key={vote._id}>
-                                        <StyledTableCell align="left">{vote.activity.name}</StyledTableCell>
                                         <StyledTableCell align="left">{vote.user.email}</StyledTableCell>
                                         <StyledTableCell align="left">{vote.foodVoted}</StyledTableCell>
                                         <StyledTableCell align="left">{vote.movieVoted}</StyledTableCell>
